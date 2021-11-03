@@ -292,6 +292,9 @@ const raycaster = new THREE.Raycaster();
 let intersects: THREE.Intersection[];
 const mouse = new THREE.Vector2();
 
+const overablebjects: THREE.Points[] = [];
+const overablebjectsLabels: { [key: number]: CSS2DObject } = {};
+
 renderer.domElement.addEventListener("pointerdown", onClick, false);
 function onClick() {
   if (ctrlDown) {
@@ -356,23 +359,29 @@ function onClick() {
       particlesGeometry,
       new THREE.PointsMaterial({
         map: new THREE.TextureLoader().load("/img/pontoInteresse.jpg"),
-        size: 0.2
+        size: 0.1
       })
     );
-
-    console.log("point", point);
+    let whateverYouWant = new THREE.Vector3();
+    point.getWorldPosition(whateverYouWant);
+    console.log("whateverYouWant", whateverYouWant);
+    console.log("point.position", point.position);
     scene.add(point);
-
+    overablebjects.push(point);
     const labelDiv = document.createElement("div") as HTMLDivElement;
-    labelDiv.className = "measurementLabel";
+    // labelDiv.className = "measurementLabel";
     labelDiv.innerText = "Ponto de interesse";
 
     const measurementLabel = new CSS2DObject(labelDiv);
     measurementLabel.position.set(
       intersects[0].point.x,
-      intersects[0].point.y + 0.45,
+      intersects[0].point.y + 0.35,
       intersects[0].point.z
     );
+
+    console.log("point.id", point.id);
+
+    overablebjectsLabels[point.id] = measurementLabel;
     scene.add(measurementLabel);
   }
 }
@@ -384,8 +393,22 @@ function onDocumentMouseMove(event: MouseEvent) {
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
+  raycaster.setFromCamera(mouse, camera);
+  if (raycaster.params.Points) raycaster.params.Points.threshold = 0.05;
+
+  let key: any; // Type is "one" | "two" | "three"
+  for (key in overablebjectsLabels) {
+    overablebjectsLabels[key].element.className = "measurementLabelNone";
+  }
+
+  intersects = raycaster.intersectObjects(overablebjects, false);
+  if (intersects.length > 0) {
+    console.log("intersects", intersects);
+    overablebjectsLabels[intersects[0].object.id].element.className =
+      "measurementLabel";
+  }
+
   if (drawingLine) {
-    console.log("lineId", lineId);
     raycaster.setFromCamera(mouse, camera);
     intersects = raycaster.intersectObjects(pickableObjects, false);
     if (intersects.length > 0) {
@@ -402,7 +425,6 @@ function onDocumentMouseMove(event: MouseEvent) {
       positions[5] = intersects[0].point.z;
       line.geometry.attributes.position.needsUpdate = true;
       const distance = v0.distanceTo(v1);
-      console.log("distance", distance);
       measurementLabels[lineId].element.innerText = distance.toFixed(2) + "m";
       measurementLabels[lineId].position.lerpVectors(v0, v1, 0.5);
     }
