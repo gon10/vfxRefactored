@@ -5,11 +5,16 @@ const path = require("path");
 
 module.exports = {
   entry: path.resolve(__dirname, "../src/script.ts"),
+  resolve: {
+    alias: {
+      three: path.resolve("./node_modules/three")
+    },
+    extensions: [".tsx", ".ts", ".js"]
+  },
   output: {
-    filename: "bundle.[contenthash].js",
+    filename: "bundle.js",
     path: path.resolve(__dirname, "../dist")
   },
-  devtool: "source-map",
   plugins: [
     new CopyWebpackPlugin({
       patterns: [{ from: path.resolve(__dirname, "../static") }]

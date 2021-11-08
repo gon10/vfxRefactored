@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES6",
     "moduleResolution": "node",
     "strict": true,
     "paths": {
       "three/examples/jsm/libs/dat.gui.module": [
-        "../../node_modules/@types/dat.gui"
-      ]
+        "../node_modules/@types/dat.gui"
+      ],
+      "three/examples/jsm/libs/tween.module.min": ["./typings/tween.js"]
     }
+    // "noImplicitAny": false
   },
   "include": ["**/*.ts"]
 }

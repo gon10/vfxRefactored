@@ -25,3 +25,32 @@ body {
 .measurementLabelNone {
   display: none;
 }
+
+.centerLocationLabel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: 40px;
+  padding: 10px;
+  background: rgb(143, 120, 225);
+  border: 2px rgba(255, 255, 255, 0.473) solid;
+  text-align: center;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: white;
+  font-size: 14px;
+  border-bottom: none;
+  box-shadow: 0 0 5px rgb(0 0 0 / 51%);
+  border-radius: 7px;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-none {
+  display: none;
+}
