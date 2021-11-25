@@ -7,8 +7,8 @@
         "../node_modules/@types/dat.gui"
       ],
       "three/examples/jsm/libs/tween.module.min": ["./typings/tween.js"]
-    }
-    // "noImplicitAny": false
+    },
+    "noImplicitAny": false
   },
   "include": ["**/*.ts"]
 }

@@ -3,6 +3,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GUI } from "dat.gui";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+// import { GLTFLoader } from "./GLTFLoader.js";
 import Stats from "three/examples/jsm/libs/stats.module";
 import {
   CSS2DRenderer,
@@ -24,6 +25,7 @@ let locationLabel: HTMLDivElement = document.querySelector(
  * Loaders
  */
 const gltfLoader = new GLTFLoader();
+// const gltfLoader = new THREE.GLTFLoader();
 // const cubeTextureLoader = new THREE.CubeTextureLoader();
 const textureLoader = new THREE.TextureLoader();
 const bgTexture = textureLoader.load("/img/bg2.jpg");
@@ -48,20 +50,20 @@ scene.add(axesHelper);
 /**
  * Update all materials
  */
-const updateAllMaterials = () => {
-  scene.traverse(child => {
-    if (
-      child instanceof THREE.Mesh &&
-      child.material instanceof THREE.MeshStandardMaterial
-    ) {
-      // child.material.envMap = environmentMap;
-      child.material.envMapIntensity = debugObject.envMapIntensity;
-      child.material.needsUpdate = true;
-      child.castShadow = true;
-      child.receiveShadow = true;
-    }
-  });
-};
+// const updateAllMaterials = () => {
+//   scene.traverse(child => {
+//     if (
+//       child instanceof THREE.Mesh &&
+//       child.material instanceof THREE.MeshStandardMaterial
+//     ) {
+//       // child.material.envMap = environmentMap;
+//       child.material.envMapIntensity = debugObject.envMapIntensity;
+//       child.material.needsUpdate = true;
+//       child.castShadow = true;
+//       child.receiveShadow = true;
+//     }
+//   });
+// };
 
 /**
  * Environment map
@@ -80,13 +82,13 @@ const updateAllMaterials = () => {
 // scene.background = environmentMap;
 // scene.environment = environmentMap;
 
-debugObject.envMapIntensity = 5;
-gui
-  .add(debugObject, "envMapIntensity")
-  .min(0)
-  .max(10)
-  .step(0.001)
-  .onChange(updateAllMaterials);
+// debugObject.envMapIntensity = 5;
+// gui
+//   .add(debugObject, "envMapIntensity")
+//   .min(0)
+//   .max(10)
+//   .step(0.001)
+//   .onChange(updateAllMaterials);
 
 const pickableObjects: THREE.Mesh[] = [];
 
@@ -109,15 +111,15 @@ const pickableObjects: THREE.Mesh[] = [];
 /**
  * Lights
  */
-const directionalLight = new THREE.DirectionalLight("#ffffff", 3);
-directionalLight.castShadow = true;
-directionalLight.shadow.camera.far = 15;
-directionalLight.shadow.mapSize.set(1024, 1024);
-// directionalLight.shadow.normalBias = 0.05;
-directionalLight.position.set(0.25, 3, -2.25);
-scene.add(directionalLight);
+// const directionalLight = new THREE.DirectionalLight("#ffffff", 3);
+// directionalLight.castShadow = true;
+// directionalLight.shadow.camera.far = 15;
+// directionalLight.shadow.mapSize.set(1024, 1024);
+// // directionalLight.shadow.normalBias = 0.05;
+// directionalLight.position.set(0.25, 3, -2.25);
+// scene.add(directionalLight);
 
-const ambientLight = new THREE.AmbientLight("#ffffff", 10);
+const ambientLight = new THREE.AmbientLight("#ffffff", 5);
 // directionalLight.castShadow = true;
 // directionalLight.shadow.camera.far = 15;
 // directionalLight.shadow.mapSize.set(1024, 1024);
@@ -125,37 +127,37 @@ const ambientLight = new THREE.AmbientLight("#ffffff", 10);
 ambientLight.position.set(0.25, 3, -2.25);
 scene.add(ambientLight);
 
-gui
-  .add(directionalLight, "intensity")
-  .min(0)
-  .max(10)
-  .step(0.001)
-  .name("lightIntensity");
-gui
-  .add(directionalLight.position, "x")
-  .min(-5)
-  .max(5)
-  .step(0.001)
-  .name("lightX");
-gui
-  .add(directionalLight.position, "y")
-  .min(-5)
-  .max(5)
-  .step(0.001)
-  .name("lightY");
-gui
-  .add(directionalLight.position, "z")
-  .min(-5)
-  .max(5)
-  .step(0.001)
-  .name("lightZ");
+// gui
+//   .add(directionalLight, "intensity")
+//   .min(0)
+//   .max(10)
+//   .step(0.001)
+//   .name("lightIntensity");
+// gui
+//   .add(directionalLight.position, "x")
+//   .min(-5)
+//   .max(5)
+//   .step(0.001)
+//   .name("lightX");
+// gui
+//   .add(directionalLight.position, "y")
+//   .min(-5)
+//   .max(5)
+//   .step(0.001)
+//   .name("lightY");
+// gui
+//   .add(directionalLight.position, "z")
+//   .min(-5)
+//   .max(5)
+//   .step(0.001)
+//   .name("lightZ");
 
-gui
-  .add(ambientLight, "intensity")
-  .min(0)
-  .max(10)
-  .step(0.001)
-  .name("ambientLight");
+// gui
+//   .add(ambientLight, "intensity")
+//   .min(0)
+//   .max(10)
+//   .step(0.001)
+//   .name("ambientLight");
 
 /**
  * Sizes
@@ -198,6 +200,7 @@ camera.position.set(
   cameraInitialPosition.z
 );
 
+const geral_mapa_group = new THREE.Group();
 const GroupCamera = new THREE.Group();
 GroupCamera.name = "GroupCamera";
 GroupCamera.add(camera);
@@ -224,7 +227,7 @@ const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
   antialias: true
 });
-renderer.physicallyCorrectLights = true;
+// renderer.physicallyCorrectLights = true;
 // renderer.outputEncoding = THREE.sRGBEncoding;
 // renderer.toneMapping = THREE.ReinhardToneMapping;
 // renderer.toneMappingExposure = 3;
@@ -233,19 +236,19 @@ renderer.physicallyCorrectLights = true;
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-gui
-  .add(renderer, "toneMapping", {
-    No: THREE.NoToneMapping,
-    Linear: THREE.LinearToneMapping,
-    Reinhard: THREE.ReinhardToneMapping,
-    Cineon: THREE.CineonToneMapping,
-    ACESFilmic: THREE.ACESFilmicToneMapping
-  })
-  .onFinishChange(() => {
-    renderer.toneMapping = Number(renderer.toneMapping);
-    updateAllMaterials();
-  });
-gui.add(renderer, "toneMappingExposure").min(0).max(10).step(0.001);
+// gui
+//   .add(renderer, "toneMapping", {
+//     No: THREE.NoToneMapping,
+//     Linear: THREE.LinearToneMapping,
+//     Reinhard: THREE.ReinhardToneMapping,
+//     Cineon: THREE.CineonToneMapping,
+//     ACESFilmic: THREE.ACESFilmicToneMapping
+//   })
+//   .onFinishChange(() => {
+//     renderer.toneMapping = Number(renderer.toneMapping);
+//     updateAllMaterials();
+//   });
+// gui.add(renderer, "toneMappingExposure").min(0).max(10).step(0.001);
 
 const labelRenderer = new CSS2DRenderer();
 labelRenderer.setSize(window.innerWidth, window.innerHeight);
@@ -419,35 +422,37 @@ function onClick() {
     //     locationLabel.classList.remove("d-none");
     //   });
   } else {
+    if (!locationLabel.classList.contains("d-none")) {
+      new TWEEN.Tween(controls.target)
+        .to(
+          {
+            x: -1.9,
+            y: 0.3,
+            z: -0.8
+          },
+          1500
+        )
+        //.delay (1000)
+        .easing(TWEEN.Easing.Cubic.Out)
+        //.onUpdate(() => render())
+        .start()
+        .onComplete(() => controls.update());
+      new TWEEN.Tween(camera.position)
+        .to(
+          {
+            x: cameraInitialPosition.x,
+            y: cameraInitialPosition.y,
+            z: cameraInitialPosition.z
+          },
+          1500
+        )
+        //.delay (1000)
+        .easing(TWEEN.Easing.Cubic.Out)
+        //.onUpdate(() => render())
+        .start()
+        .onComplete(() => controls.update());
+    }
     locationLabel.classList.add("d-none");
-    new TWEEN.Tween(controls.target)
-      .to(
-        {
-          x: -1.9,
-          y: 0.3,
-          z: -0.8
-        },
-        1500
-      )
-      //.delay (1000)
-      .easing(TWEEN.Easing.Cubic.Out)
-      //.onUpdate(() => render())
-      .start()
-      .onComplete(() => controls.update());
-    new TWEEN.Tween(camera.position)
-      .to(
-        {
-          x: cameraInitialPosition.x,
-          y: cameraInitialPosition.y,
-          z: cameraInitialPosition.z
-        },
-        1500
-      )
-      //.delay (1000)
-      .easing(TWEEN.Easing.Cubic.Out)
-      //.onUpdate(() => render())
-      .start()
-      .onComplete(() => controls.update());
   }
 }
 
@@ -554,35 +559,29 @@ const loadGeralMapa = () => {
       "/models/GERAL-MAPA-RECORTADO-V2-COMPRESSED.glb",
       gltf => {
         gltf.scene.scale.set(0.01, 0.01, 0.01);
-        gltf.scene.traverse(function (child) {
-          if ((child as THREE.Mesh).isMesh) {
-            const m = child as THREE.Mesh;
-            switch (m.name) {
-              case "Plane":
-                m.receiveShadow = true;
-                break;
-              default:
-                m.castShadow = true;
-            }
-            pickableObjects.push(m);
-          }
-        });
+        // gltf.scene.traverse(function (child) {
+        //   if ((child as THREE.Mesh).isMesh) {
+        //     const m = child as THREE.Mesh;
+        //     switch (m.name) {
+        //       case "Plane":
+        //         m.receiveShadow = true;
+        //         break;
+        //       default:
+        //         m.castShadow = true;
+        //     }
+        //     pickableObjects.push(m);
+        //   }
+        // });
 
         geralMapa = gltf.scene;
-        scene.add(geralMapa);
+        geral_mapa_group.add(geralMapa);
+        scene.add(geral_mapa_group);
         generateGeralPoints();
-        // gui
-        //   .add(gltf.scene.rotation, "y")
-        //   .min(-Math.PI)
-        //   .max(Math.PI)
-        //   .step(0.001)
-        //   .name("rotation");
 
-        updateAllMaterials();
+        // updateAllMaterials();
       },
       xhr => {
-        console.log(xhr);
-        console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+        console.log((xhr.loaded / 72374312) * 100 + "% loaded");
       },
       error => {
         console.log(error);
@@ -625,7 +624,7 @@ const loadAguieiraMapa = () => {
         //   .step(0.001)
         //   .name("rotation");
 
-        updateAllMaterials();
+        // updateAllMaterials();
       },
       xhr => {
         // console.log(xhr);
@@ -665,5 +664,4 @@ const tick = () => {
   // Call tick again on the next frame
   window.requestAnimationFrame(tick);
 };
-
 tick();
