@@ -20,7 +20,13 @@ let herculesMap: any = null;
 let locationLabel: HTMLDivElement = document.querySelector(
   ".centerLocationLabel"
 ) as HTMLDivElement;
-
+let loadingDiv: HTMLDivElement = document.querySelector(
+  "#loading"
+) as HTMLDivElement;
+let loadingBar: HTMLDivElement = document.querySelector(
+  "#loading-bar"
+) as HTMLDivElement;
+let selectedPoint: any = null;
 /**
  * Loaders
  */
@@ -34,7 +40,7 @@ const bgTexture = textureLoader.load("/img/bg2.jpg");
  * Base
  */
 // Debug
-const gui = new GUI();
+// const gui = new GUI();
 const debugObject: any = {};
 
 // Canvas
@@ -44,26 +50,26 @@ const canvas = document.querySelector("canvas.webgl") as HTMLElement;
 const scene = new THREE.Scene();
 scene.background = bgTexture;
 
-const axesHelper = new THREE.AxesHelper(1);
-scene.add(axesHelper);
+// const axesHelper = new THREE.AxesHelper(1);
+// scene.add(axesHelper);
 
 /**
  * Update all materials
  */
-// const updateAllMaterials = () => {
-//   scene.traverse(child => {
-//     if (
-//       child instanceof THREE.Mesh &&
-//       child.material instanceof THREE.MeshStandardMaterial
-//     ) {
-//       // child.material.envMap = environmentMap;
-//       child.material.envMapIntensity = debugObject.envMapIntensity;
-//       child.material.needsUpdate = true;
-//       child.castShadow = true;
-//       child.receiveShadow = true;
-//     }
-//   });
-// };
+const updateAllMaterials = () => {
+  scene.traverse(child => {
+    if (
+      child instanceof THREE.Mesh &&
+      child.material instanceof THREE.MeshStandardMaterial
+    ) {
+      // child.material.envMap = environmentMap;
+      child.material.envMapIntensity = debugObject.envMapIntensity;
+      child.material.needsUpdate = true;
+      child.castShadow = true;
+      child.receiveShadow = true;
+    }
+  });
+};
 
 /**
  * Environment map
@@ -82,7 +88,7 @@ scene.add(axesHelper);
 // scene.background = environmentMap;
 // scene.environment = environmentMap;
 
-// debugObject.envMapIntensity = 5;
+debugObject.envMapIntensity = 5;
 // gui
 //   .add(debugObject, "envMapIntensity")
 //   .min(0)
@@ -111,19 +117,24 @@ const pickableObjects: THREE.Mesh[] = [];
 /**
  * Lights
  */
-// const directionalLight = new THREE.DirectionalLight("#ffffff", 3);
-// directionalLight.castShadow = true;
-// directionalLight.shadow.camera.far = 15;
-// directionalLight.shadow.mapSize.set(1024, 1024);
-// // directionalLight.shadow.normalBias = 0.05;
-// directionalLight.position.set(0.25, 3, -2.25);
-// scene.add(directionalLight);
-
-const ambientLight = new THREE.AmbientLight("#ffffff", 5);
-// directionalLight.castShadow = true;
-// directionalLight.shadow.camera.far = 15;
-// directionalLight.shadow.mapSize.set(1024, 1024);
+const directionalLight = new THREE.DirectionalLight("#ffffff", 3);
+directionalLight.castShadow = true;
+directionalLight.shadow.camera.far = 15;
+directionalLight.shadow.mapSize.set(1024, 1024);
 // directionalLight.shadow.normalBias = 0.05;
+directionalLight.position.set(0.4, 0.5, 0.6);
+scene.add(directionalLight);
+
+// const directionalLightCameraHelper = new THREE.CameraHelper(
+//   directionalLight.shadow.camera
+// );
+// scene.add(directionalLightCameraHelper);
+
+const ambientLight = new THREE.AmbientLight("#ffffff", 2.4);
+directionalLight.castShadow = true;
+directionalLight.shadow.camera.far = 15;
+directionalLight.shadow.mapSize.set(1024, 1024);
+directionalLight.shadow.normalBias = 0.05;
 ambientLight.position.set(0.25, 3, -2.25);
 scene.add(ambientLight);
 
@@ -193,7 +204,8 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-const cameraInitialPosition: Vector3 = new Vector3(0.8, 1.2, 0.5);
+const cameraInitialPosition: Vector3 = new Vector3(4, 0.5, -3);
+const cameraInitialTarget: Vector3 = new Vector3(0.66, -0.5, -2.8);
 camera.position.set(
   cameraInitialPosition.x,
   cameraInitialPosition.y,
@@ -210,15 +222,19 @@ scene.add(GroupCamera);
 // Controls
 const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true;
-(controls.rotateSpeed = 0.1),
-  (controls.minPolarAngle = 0),
-  (controls.maxPolarAngle = Math.PI / 2.5),
-  (controls.minAzimuthAngle = -Math.PI / 2.5);
-controls.maxAzimuthAngle = Math.PI / 2.5;
+// (controls.rotateSpeed = 0.1),
+//   (controls.minPolarAngle = 0),
+//   (controls.maxPolarAngle = Math.PI / 2.5),
+//   (controls.minAzimuthAngle = -Math.PI / 2.5);
+// controls.maxAzimuthAngle = Math.PI / 2.5;
 //   (controls.minDistance = 3),
 //   (controls.maxDistance = 9),
 //   (controls.dampingFactor = 0.05);
-controls.target.set(-1.9, 0.3, -0.8);
+controls.target.set(
+  cameraInitialTarget.x,
+  cameraInitialTarget.y,
+  cameraInitialTarget.z
+);
 
 /**
  * Renderer
@@ -227,12 +243,12 @@ const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
   antialias: true
 });
-// renderer.physicallyCorrectLights = true;
-// renderer.outputEncoding = THREE.sRGBEncoding;
-// renderer.toneMapping = THREE.ReinhardToneMapping;
-// renderer.toneMappingExposure = 3;
-// renderer.shadowMap.enabled = true;
-// renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.physicallyCorrectLights = true;
+renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.toneMapping = THREE.LinearToneMapping;
+renderer.toneMappingExposure = 0.8;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
@@ -359,8 +375,44 @@ function onClick() {
     // var tween = new TWEEN.Tween(position).to(target, 2000);
 
     const inBetween = new THREE.Vector3();
-    inBetween.lerpVectors(camera.position, point, 0.5);
+    inBetween.lerpVectors(cameraInitialPosition, point, 0.5);
 
+    // new TWEEN.Tween(camera.position)
+    //   .to(
+    //     {
+    //       x: cameraInitialPosition.x,
+    //       y: cameraInitialPosition.y,
+    //       z: cameraInitialPosition.z
+    //     },
+    //     1500
+    //   )
+    //   //.delay (1000)
+    //   .easing(TWEEN.Easing.Cubic.Out)
+    //   //.onUpdate(() => render())
+    //   .start()
+    //   .onComplete(() => {
+    //     new TWEEN.Tween(camera.position)
+    //       .to(
+    //         {
+    //           x: inBetween.x,
+    //           y: inBetween.y,
+    //           z: inBetween.z
+    //         },
+    //         1500
+    //       )
+    //       //.delay (1000)
+    //       .easing(TWEEN.Easing.Cubic.Out)
+    //       //.onUpdate(() => render())
+    //       .start()
+    //       .onComplete(() => {
+    //         console.log("controls.target to", point);
+    //         console.log("completed tween", locationLabel, obj);
+    //         locationLabel.innerHTML = `${obj.name} <br> <span>visitar</span>`;
+    //         locationLabel.classList.remove("d-none");
+    //         controls.update();
+    //       });
+    //     controls.update();
+    //   });
     new TWEEN.Tween(camera.position)
       .to(
         {
@@ -374,11 +426,17 @@ function onClick() {
       .easing(TWEEN.Easing.Cubic.Out)
       //.onUpdate(() => render())
       .start()
+      .onStart(() => {
+        locationLabel.classList.add("d-none");
+        locationLabel.removeEventListener("click", openNewTab);
+      })
       .onComplete(() => {
         console.log("controls.target to", point);
-        console.log("completed tween", locationLabel, obj);
+        console.log("completed tween camera pos", locationLabel, obj);
         locationLabel.innerHTML = `${obj.name} <br> <span>visitar</span>`;
         locationLabel.classList.remove("d-none");
+        selectedPoint = obj;
+        locationLabel.addEventListener("click", openNewTab);
         controls.update();
       });
 
@@ -402,39 +460,21 @@ function onClick() {
         locationLabel.classList.remove("d-none");
         controls.update();
       });
-
-    // new TWEEN.Tween(GroupCamera.position)
-    //   .to(
-    //     {
-    //       x: p.x,
-    //       y: p.y,
-    //       z: p.z
-    //     },
-    //     500
-    //   )
-    //   //.delay (1000)
-    //   .easing(TWEEN.Easing.Cubic.Out)
-    //   //.onUpdate(() => render())
-    //   .start()
-    //   .onComplete(() => {
-    //     console.log("completed tween", locationLabel, obj);
-    //     locationLabel.innerHTML = `${obj.name} <br> <span>visitar</span>`;
-    //     locationLabel.classList.remove("d-none");
-    //   });
   } else {
     if (!locationLabel.classList.contains("d-none")) {
       new TWEEN.Tween(controls.target)
         .to(
           {
-            x: -1.9,
-            y: 0.3,
-            z: -0.8
+            x: cameraInitialTarget.x,
+            y: cameraInitialTarget.y,
+            z: cameraInitialTarget.z
           },
           1500
         )
         //.delay (1000)
         .easing(TWEEN.Easing.Cubic.Out)
         //.onUpdate(() => render())
+        .onStart(() => locationLabel.removeEventListener("click", openNewTab))
         .start()
         .onComplete(() => controls.update());
       new TWEEN.Tween(camera.position)
@@ -449,12 +489,19 @@ function onClick() {
         //.delay (1000)
         .easing(TWEEN.Easing.Cubic.Out)
         //.onUpdate(() => render())
+        .onStart(() => locationLabel.removeEventListener("click", openNewTab))
         .start()
+        .onStart(() => locationLabel.classList.add("d-none"))
         .onComplete(() => controls.update());
     }
     locationLabel.classList.add("d-none");
   }
 }
+
+const openNewTab = function (event) {
+  if (selectedPoint?.userData?.url)
+    window.open(selectedPoint.userData.url, "_blank");
+};
 
 document.addEventListener("mousemove", onDocumentMouseMove, false);
 function onDocumentMouseMove(event: MouseEvent) {
@@ -532,12 +579,15 @@ const generateGeralPoints = () => {
     // console.log("whateverYouWant", whateverYouWant);
     // console.log("point.position", point.position);
     point.name = geralPoint.name;
+    point.userData.url = geralPoint.url;
     scene.add(point);
     overablebjects.push(point);
     const labelDiv = document.createElement("div") as HTMLDivElement;
     labelDiv.className = "measurementLabelNone";
     labelDiv.innerText = geralPoint.name;
-    // labelDiv.setAttribute("onclick", "loadAguieiraMapa()");
+    labelDiv.addEventListener("click", function () {
+      window.open(geralPoint.url, "_blank");
+    });
 
     const measurementLabel = new CSS2DObject(labelDiv);
     measurementLabel.position.set(
@@ -556,32 +606,57 @@ const loadGeralMapa = () => {
   if (!geralMapa) {
     console.log("load");
     gltfLoader.load(
-      "/models/GERAL-MAPA-RECORTADO-V2-COMPRESSED.glb",
+      "/models/VFX2.glb",
       gltf => {
         gltf.scene.scale.set(0.01, 0.01, 0.01);
-        // gltf.scene.traverse(function (child) {
-        //   if ((child as THREE.Mesh).isMesh) {
-        //     const m = child as THREE.Mesh;
-        //     switch (m.name) {
-        //       case "Plane":
-        //         m.receiveShadow = true;
-        //         break;
-        //       default:
-        //         m.castShadow = true;
-        //     }
-        //     pickableObjects.push(m);
-        //   }
-        // });
+        gltf.scene.rotateX(-Math.PI / 2);
+        gltf.scene.traverse(function (child) {
+          if ((child as THREE.Mesh).isMesh) {
+            const m = child as THREE.Mesh;
+            switch (m.name) {
+              case "Plane":
+                m.receiveShadow = true;
+                break;
+              default:
+                m.castShadow = true;
+            }
+            pickableObjects.push(m);
+          }
+        });
+
+        // gui
+        //   .add(gltf.scene.rotation, "y")
+        //   .min(-Math.PI)
+        //   .max(Math.PI)
+        //   .step(0.001)
+        //   .name("rotation y");
+
+        // gui
+        //   .add(gltf.scene.rotation, "x")
+        //   .min(-Math.PI)
+        //   .max(Math.PI)
+        //   .step(0.001)
+        //   .name("rotation x");
+
+        // gui
+        //   .add(gltf.scene.rotation, "z")
+        //   .min(-Math.PI)
+        //   .max(Math.PI)
+        //   .step(0.001)
+        //   .name("rotation z");
 
         geralMapa = gltf.scene;
         geral_mapa_group.add(geralMapa);
         scene.add(geral_mapa_group);
         generateGeralPoints();
+        loadingDiv.style.display = "none";
 
-        // updateAllMaterials();
+        updateAllMaterials();
       },
       xhr => {
-        console.log((xhr.loaded / 72374312) * 100 + "% loaded");
+        console.log((xhr.loaded / 86799592) * 100 + "% loaded");
+        console.log("xhr", xhr);
+        loadingBar.style.width = (xhr.loaded / 109232080) * 100 - 1 + "%";
       },
       error => {
         console.log(error);
@@ -601,19 +676,19 @@ const loadAguieiraMapa = () => {
       "/models/AGUIEIRA-FINAL-V2-COMPRESSED.glb",
       gltf => {
         gltf.scene.scale.set(0.01, 0.01, 0.01);
-        gltf.scene.traverse(function (child) {
-          if ((child as THREE.Mesh).isMesh) {
-            const m = child as THREE.Mesh;
-            switch (m.name) {
-              case "Plane":
-                m.receiveShadow = true;
-                break;
-              default:
-                m.castShadow = true;
-            }
-            pickableObjects.push(m);
-          }
-        });
+        // gltf.scene.traverse(function (child) {
+        //   if ((child as THREE.Mesh).isMesh) {
+        //     const m = child as THREE.Mesh;
+        //     switch (m.name) {
+        //       case "Plane":
+        //         m.receiveShadow = true;
+        //         break;
+        //       default:
+        //         m.castShadow = true;
+        //     }
+        //     pickableObjects.push(m);
+        //   }
+        // });
 
         aguieiraMap = gltf.scene;
         scene.add(aguieiraMap);
@@ -644,8 +719,8 @@ loadGeralMapa();
 
 // setTimeout(loadAguieiraMapa, 6000);
 
-const stats = Stats();
-document.body.appendChild(stats.dom);
+// const stats = Stats();
+// document.body.appendChild(stats.dom);
 /**
  * Animate
  */
@@ -657,7 +732,7 @@ const tick = () => {
   renderer.render(scene, camera);
   labelRenderer.render(scene, camera);
 
-  stats.update();
+  // stats.update();
 
   TWEEN.update();
 

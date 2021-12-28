@@ -8,6 +8,22 @@ body {
   overflow: hidden;
 }
 
+.loading {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: 99;
+  background: white url("../dist/img/Vila_Franca_de_Xira10.png") no-repeat
+    center;
+}
+
+.loading-bar {
+  width: 0%;
+  border-radius: 20px;
+  background-color: rgb(16, 48, 192);
+  height: 10px;
+}
+
 .webgl {
   position: fixed;
   top: 0;
