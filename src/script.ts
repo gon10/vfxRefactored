@@ -23,6 +23,8 @@ let locationLabel: HTMLDivElement = document.querySelector(
 let loadingDiv: HTMLDivElement = document.querySelector(
   "#loading"
 ) as HTMLDivElement;
+loadingDiv.style.background =
+  "white url('./img/Vila_Franca_de_Xira10.png') no-repeat center center";
 let loadingBar: HTMLDivElement = document.querySelector(
   "#loading-bar"
 ) as HTMLDivElement;
@@ -34,7 +36,7 @@ const gltfLoader = new GLTFLoader();
 // const gltfLoader = new THREE.GLTFLoader();
 // const cubeTextureLoader = new THREE.CubeTextureLoader();
 const textureLoader = new THREE.TextureLoader();
-const bgTexture = textureLoader.load("/img/bg2.jpg");
+const bgTexture = textureLoader.load("./img/bg2.jpg");
 
 /**
  * Base
@@ -570,7 +572,7 @@ const generateGeralPoints = () => {
     let point = new THREE.Points(
       particlesGeometry,
       new THREE.PointsMaterial({
-        map: new THREE.TextureLoader().load("/img/pontoInteresse.jpg"),
+        map: new THREE.TextureLoader().load("./img/pontoInteresse.jpg"),
         size: 0.1
       })
     );
@@ -606,7 +608,7 @@ const loadGeralMapa = () => {
   if (!geralMapa) {
     console.log("load");
     gltfLoader.load(
-      "/models/VFX2.glb",
+      "./models/VFX2.glb",
       gltf => {
         gltf.scene.scale.set(0.01, 0.01, 0.01);
         gltf.scene.rotateX(-Math.PI / 2);
