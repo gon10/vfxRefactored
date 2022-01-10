@@ -24,7 +24,7 @@ let loadingDiv: HTMLDivElement = document.querySelector(
   "#loading"
 ) as HTMLDivElement;
 loadingDiv.style.background =
-  "white url('./img/Vila_Franca_de_Xira10.png') no-repeat center center";
+  "white url('./img/vf.jpeg') no-repeat center center";
 let loadingBar: HTMLDivElement = document.querySelector(
   "#loading-bar"
 ) as HTMLDivElement;
@@ -608,7 +608,7 @@ const loadGeralMapa = () => {
   if (!geralMapa) {
     console.log("load");
     gltfLoader.load(
-      "./models/VFX2.glb",
+      "./models/sob.glb",
       gltf => {
         gltf.scene.scale.set(0.01, 0.01, 0.01);
         gltf.scene.rotateX(-Math.PI / 2);

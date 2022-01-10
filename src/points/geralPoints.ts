@@ -12,9 +12,9 @@ export default AllPoints = [
     name: "Busto do José Júlio",
     point: "1",
     position: {
-      x: -0.6446135139415828,
-      y: -0.5,
-      z: -0.7076798387903979
+      x: -0.2230198733209511,
+      y: -0,
+      z: -0.8827797132906835
     },
     icon: "./img/circuito.png",
     url: ""
