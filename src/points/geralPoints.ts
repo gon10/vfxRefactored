@@ -9,155 +9,95 @@ let AllPoints: Point[];
 
 export default AllPoints = [
   {
-    name: "Busto do José Júlio",
+    name: "Centro de Convívio Dr. Álvaro Pinheiro",
     point: "1",
     position: {
-      x: -0.2230198733209511,
-      y: -0,
-      z: -0.8827797132906835
+      x: 0.5026808918441518,
+      y: 0,
+      z: -2.7019750665184468
     },
     icon: "./img/circuito.png",
-    url: ""
+    url: "https://rhlt.cm-vfxira.pt/sobralinho/alvaro-pinheiro"
   },
   {
-    name: "Monumento à Varina",
+    name: "Quinta Municipal do Sobralinho",
     point: "2",
     position: {
-      x: -0.35375702368778833,
-      y: -0.5,
-      z: -1.4082805597608636
+      x: 0.4354022431774099,
+      y: -0,
+      z: -4.183963911153379
     },
 
     icon: "./img/circuito.png",
-    url: "https://rhlt.cm-vfxira.pt/vfx/varina"
+    url: "https://www.cm-vfxira.pt/saber-lazer/patrimonio/sobralinho/poi/quinta-municipal-do-sobralinho"
   },
   {
-    name: "Celeiro da Patriarcal",
+    name: "Palácio do Sobralinho",
     point: "3",
     position: {
-      x: 0.30032433580827633,
-      y: -0.5,
-      z: -0.4905834495185127
+      x: 0.651548500513253,
+      y: 0.123,
+      z: -5.523618814360195
     },
 
     icon: "./img/circuito.png",
     url: ""
   },
   {
-    name: "Monumento ao Campino",
+    name: "Torre da Antiga Igreja do Sobralinho",
     point: "4",
     position: {
-      x: 0.0751304197038371,
-      y: -0.5,
-      z: -1.0400839921457148
+      x: 0.8795404418384243,
+      y: 0,
+      z: -2.822879998161505
     },
 
     icon: "./img/quinta.png",
-    url: ""
+    url: "https://rhlt.cm-vfxira.pt/sobralinho/torre"
   },
   {
-    name: "Paços do Concelho",
+    name: "Casa da Juventude do Sobralinho",
     point: "5",
     position: {
-      x: -0.16547757633544058,
-      y: -0.5,
-      z: -1.506937327180205
+      x: 0.5450762874134447,
+      y: 0,
+      z: -3.076090027242039
     },
 
     icon: "./img/quinta.png",
-    url: ""
+    url: "https://rhlt.cm-vfxira.pt/sobralinho/juventude"
   },
   {
-    name: "Pelourinho Manuelinho De Vila Franca de Xira",
+    name: "Cruzeiro do Sobralinho",
     point: "6",
-    position: { x: -0.05418853155022726, y: -0.5, z: -1.7441388111330685 },
+    position: {
+      x: 0.40660880644774566,
+      y: 0,
+      z: -3.4942669827375044
+    },
 
     icon: "./img/monumento.jpg",
-    url: ""
+    url: "https://rhlt.cm-vfxira.pt/sobralinho/cruzeiro"
   },
   {
-    name: "Oculista Nunes",
+    name: "Ruínas do Convento de Nossa Senhora dos Anjos",
     point: "7",
-    position: { x: -0.022537940505767528, y: -0.5, z: -1.8532822917562257 },
+    position: {
+      x: 0.8030323188997979,
+      y: 0.323,
+      z: -6.458177712933365
+    },
 
     icon: "./img/monumento.jpg",
     url: "https://exposicoes.cm-vfxira.pt/oculistanunes/"
   },
   {
-    name: "Antigo Edifício da Biblioteca Museu Dr. Vidal Baptista",
+    name: "Quinta do Bom Jesus",
     point: "8",
-    position: { x: 0.10928876432273713, y: -0.5, z: -1.8424108353450865 },
-
-    icon: "./img/monumento.jpg",
-    url: ""
-  },
-  {
-    name: "Café Central / Posto do Turismo",
-    point: "9",
     position: {
-      x: 0.2748419633490707,
-      y: -0.5,
-      z: -2.0488332625786603
-    },
-
-    icon: "./img/monumento.jpg",
-    url: ""
-  },
-  {
-    name: "Museu Municipal de Vila Franca de Xira",
-    point: "10",
-    position: {
-      x: 1.7619046779490242,
-      y: -0.5,
-      z: -1.2920911336404695
-    },
-
-    icon: "./img/monumento.jpg",
-    url: ""
-  },
-  {
-    name: "Museu do Neorrealismo",
-    point: "11",
-    position: {
-      x: 0.6631364873755742,
-      y: -0.5,
-      z: -2.864782462513777
-    },
-
-    icon: "./img/monumento.jpg",
-    url: ""
-  },
-  {
-    name: "Busto de Mário Coelho",
-    point: "12",
-    position: {
-      x: -0.061285959430493905,
-      y: -0.5,
-      z: -4.140694791662458
-    },
-
-    icon: "./img/monumento.jpg",
-    url: "https://rhlt.cm-vfxira.pt/vfx/mario-coelho"
-  },
-  {
-    name: "Casa Museu Mário Coelho",
-    point: "13",
-    position: {
-      x: 0.32572574476821337,
-      y: -0.5,
-      z: -4.336233316569454
-    },
-
-    icon: "./img/monumento.jpg",
-    url: "https://exposicoes.cm-vfxira.pt/casamuseumariocoelho"
-  },
-  {
-    name: "Igreja do Mártir Santo",
-    point: "14",
-    position: {
-      x: 1.3907003922051622,
-      y: -0.5,
-      z: -5.643588536887085
+      x: 3.2248868337933927,
+      y: 0,
+      z: -7.085013533699059
     },
 
     icon: "./img/monumento.jpg",
