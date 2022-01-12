@@ -224,10 +224,10 @@ scene.add(GroupCamera);
 // Controls
 const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true;
-(controls.rotateSpeed = 0.1),
-  (controls.minPolarAngle = 0),
-  (controls.maxPolarAngle = Math.PI / 2.5),
-  (controls.minAzimuthAngle = -Math.PI / 2.5);
+// (controls.rotateSpeed = 0.1),
+//   (controls.minPolarAngle = 0),
+//   (controls.maxPolarAngle = Math.PI / 2.5),
+//   (controls.minAzimuthAngle = -Math.PI / 2.5);
 // controls.maxAzimuthAngle = Math.PI / 2.5;
 // (controls.minDistance = 3),
 //   (controls.maxDistance = 9),
