@@ -24,7 +24,7 @@ let loadingDiv: HTMLDivElement = document.querySelector(
   "#loading"
 ) as HTMLDivElement;
 loadingDiv.style.background =
-  "white url('./img/sob.PNG') no-repeat center center";
+  "white url('./img/sob.png') no-repeat center center";
 let loadingBar: HTMLDivElement = document.querySelector(
   "#loading-bar"
 ) as HTMLDivElement;
@@ -224,15 +224,17 @@ scene.add(GroupCamera);
 // Controls
 const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true;
-(controls.rotateSpeed = 0.1),
-  (controls.minPolarAngle = 0),
+// (controls.rotateSpeed = 0.1),
+(controls.minPolarAngle = 0),
   (controls.maxPolarAngle = Math.PI / 2.5),
-  (controls.minAzimuthAngle = -Math.PI / 2.5);
-// controls.maxAzimuthAngle = Math.PI / 2.5;
-// (controls.minDistance = 3),
-//   (controls.maxDistance = 9),
-//   (controls.dampingFactor = 0.05);
-controls.enablePan = false;
+  //   (controls.minAzimuthAngle = -Math.PI / 2.5);
+  // controls.maxAzimuthAngle = Math.PI / 2;
+  // controls.minAzimuthAngle = 0;
+  // (controls.minDistance = 3),
+  //   (controls.maxDistance = 9),
+  //   (controls.dampingFactor = 0.05);
+  (controls.enablePan = true);
+
 controls.target.set(
   cameraInitialTarget.x,
   cameraInitialTarget.y,
@@ -657,9 +659,9 @@ const loadGeralMapa = () => {
         updateAllMaterials();
       },
       xhr => {
-        console.log((xhr.loaded / 86799592) * 100 + "% loaded");
+        console.log((xhr.loaded / 85963260) * 100 + "% loaded");
         console.log("xhr", xhr);
-        loadingBar.style.width = (xhr.loaded / 109232080) * 100 - 1 + "%";
+        loadingBar.style.width = (xhr.loaded / 85963260) * 100 - 1 + "%";
       },
       error => {
         console.log(error);
