@@ -225,14 +225,14 @@ scene.add(GroupCamera);
 const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true;
 // (controls.rotateSpeed = 0.1),
-//   (controls.minPolarAngle = 0),
-//   (controls.maxPolarAngle = Math.PI / 2.5),
-//   (controls.minAzimuthAngle = -Math.PI / 2.5);
-// controls.maxAzimuthAngle = Math.PI / 2.5;
-// (controls.minDistance = 3),
-//   (controls.maxDistance = 9),
-//   (controls.dampingFactor = 0.05);
-controls.enablePan = false;
+(controls.minPolarAngle = 0),
+  (controls.maxPolarAngle = Math.PI / 2),
+  //   (controls.minAzimuthAngle = -Math.PI / 2.5);
+  // controls.maxAzimuthAngle = Math.PI / 2.5;
+  // (controls.minDistance = 3),
+  //   (controls.maxDistance = 9),
+  //   (controls.dampingFactor = 0.05);
+  (controls.enablePan = true);
 controls.target.set(
   cameraInitialTarget.x,
   cameraInitialTarget.y,
