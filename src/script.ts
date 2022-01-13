@@ -657,9 +657,9 @@ const loadGeralMapa = () => {
         updateAllMaterials();
       },
       xhr => {
-        console.log((xhr.loaded / 86799592) * 100 + "% loaded");
+        console.log((xhr.loaded / 90957672) * 100 + "% loaded");
         console.log("xhr", xhr);
-        loadingBar.style.width = (xhr.loaded / 109232080) * 100 - 1 + "%";
+        loadingBar.style.width = (xhr.loaded / 90957672) * 100 - 1 + "%";
       },
       error => {
         console.log(error);
