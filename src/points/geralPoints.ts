@@ -16,7 +16,7 @@ export default AllPoints = [
       y: -0.5,
       z: -0.7076798387903979
     },
-    icon: "./img/circuito.png",
+    icon: "./img/pontoInteresse.jpg",
     url: ""
   },
   {
@@ -40,7 +40,7 @@ export default AllPoints = [
       z: -0.4905834495185127
     },
 
-    icon: "./img/circuito.png",
+    icon: "./img/pontoInteresse.jpg",
     url: ""
   },
   {
@@ -52,7 +52,7 @@ export default AllPoints = [
       z: -1.0400839921457148
     },
 
-    icon: "./img/quinta.png",
+    icon: "./img/pontoInteresse.jpg",
     url: ""
   },
   {
@@ -64,7 +64,7 @@ export default AllPoints = [
       z: -1.506937327180205
     },
 
-    icon: "./img/quinta.png",
+    icon: "./img/pontoInteresse.jpg",
     url: ""
   },
   {
@@ -72,7 +72,7 @@ export default AllPoints = [
     point: "6",
     position: { x: -0.05418853155022726, y: -0.5, z: -1.7441388111330685 },
 
-    icon: "./img/monumento.jpg",
+    icon: "./img/pontoInteresse.jpg",
     url: ""
   },
   {
@@ -80,7 +80,7 @@ export default AllPoints = [
     point: "7",
     position: { x: -0.022537940505767528, y: -0.5, z: -1.8532822917562257 },
 
-    icon: "./img/monumento.jpg",
+    icon: "./img/pontoInteresse.jpg",
     url: "https://exposicoes.cm-vfxira.pt/oculistanunes/"
   },
   {
@@ -88,7 +88,7 @@ export default AllPoints = [
     point: "8",
     position: { x: 0.10928876432273713, y: -0.5, z: -1.8424108353450865 },
 
-    icon: "./img/monumento.jpg",
+    icon: "./img/pontoInteresse.jpg",
     url: ""
   },
   {
@@ -100,7 +100,7 @@ export default AllPoints = [
       z: -2.0488332625786603
     },
 
-    icon: "./img/monumento.jpg",
+    icon: "./img/pontoInteresse.jpg",
     url: ""
   },
   {
@@ -112,7 +112,7 @@ export default AllPoints = [
       z: -1.2920911336404695
     },
 
-    icon: "./img/monumento.jpg",
+    icon: "./img/pontoInteresse.jpg",
     url: ""
   },
   {
@@ -124,7 +124,7 @@ export default AllPoints = [
       z: -2.864782462513777
     },
 
-    icon: "./img/monumento.jpg",
+    icon: "./img/pontoInteresse.jpg",
     url: ""
   },
   {
@@ -136,7 +136,7 @@ export default AllPoints = [
       z: -4.140694791662458
     },
 
-    icon: "./img/monumento.jpg",
+    icon: "./img/pontoInteresse.jpg",
     url: "https://rhlt.cm-vfxira.pt/vfx/mario-coelho"
   },
   {
@@ -148,7 +148,7 @@ export default AllPoints = [
       z: -4.336233316569454
     },
 
-    icon: "./img/monumento.jpg",
+    icon: "./imgpontoInteresse.jpg",
     url: "https://exposicoes.cm-vfxira.pt/casamuseumariocoelho"
   },
   {
@@ -160,7 +160,7 @@ export default AllPoints = [
       z: -5.643588536887085
     },
 
-    icon: "./img/monumento.jpg",
+    icon: "./img/pontoInteresse.jpg",
     url: ""
   }
 ];
