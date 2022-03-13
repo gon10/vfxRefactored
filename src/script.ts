@@ -24,7 +24,7 @@ let loadingDiv: HTMLDivElement = document.querySelector(
   "#loading"
 ) as HTMLDivElement;
 loadingDiv.style.background =
-  "white url('./img/vf.jpeg') no-repeat center center";
+  "white url('./img/alh.png') no-repeat center center";
 let loadingBar: HTMLDivElement = document.querySelector(
   "#loading-bar"
 ) as HTMLDivElement;
@@ -609,7 +609,7 @@ const loadGeralMapa = () => {
   if (!geralMapa) {
     console.log("load");
     gltfLoader.load(
-      "./models/VFX2.glb",
+      "./models/FINAL-4M-ALHANDRA.glb",
       gltf => {
         gltf.scene.scale.set(0.01, 0.01, 0.01);
         gltf.scene.rotateX(-Math.PI / 2);
@@ -657,9 +657,9 @@ const loadGeralMapa = () => {
         updateAllMaterials();
       },
       xhr => {
-        console.log((xhr.loaded / 90957672) * 100 + "% loaded");
+        console.log((xhr.loaded / 125074916) * 100 + "% loaded");
         console.log("xhr", xhr);
-        loadingBar.style.width = (xhr.loaded / 90957672) * 100 - 1 + "%";
+        loadingBar.style.width = (xhr.loaded / 125074916) * 100 - 1 + "%";
       },
       error => {
         console.log(error);
