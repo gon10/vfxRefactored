@@ -206,13 +206,119 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-const cameraInitialPosition: Vector3 = new Vector3(4, 0.5, -3);
-const cameraInitialTarget: Vector3 = new Vector3(0.66, -0.5, -2.8);
+const cameraInitialPosition: Vector3 = new Vector3(
+  5.883618929082438,
+  14.66356512248441,
+  23.08985366105552
+);
+const cameraInitialTarget: Vector3 = new Vector3(
+  7.432030037552482,
+  1.0503717694697747,
+  13.233210549502259
+);
 camera.position.set(
   cameraInitialPosition.x,
   cameraInitialPosition.y,
   cameraInitialPosition.z
 );
+camera.rotation.set(
+  -0.9441106069943968,
+  -0.09187005784686986,
+  -0.12603344741549677
+);
+camera.quaternion.set(
+  -0.45076101750594444,
+  -0.06942146608604258,
+  -0.03518995043466064,
+  0.8892450913735067
+);
+
+// gui
+//   .add(camera.position, "x")
+//   .min(-20)
+//   .max(20)
+//   .step(0.001)
+//   .name("position x")
+//   .onFinishChange(() => {
+//     controls.update();
+//   });
+// gui
+//   .add(camera.position, "y")
+//   .min(-20)
+//   .max(20)
+//   .step(0.001)
+//   .name("position y")
+//   .onFinishChange(() => {
+//     controls.update();
+//   });
+
+// gui
+//   .add(camera.position, "z")
+//   .min(-20)
+//   .max(20)
+//   .step(0.001)
+//   .name("position z")
+//   .onFinishChange(() => {
+//     controls.update();
+//   });
+
+// gui
+//   .add(camera.rotation, "x")
+//   .min(-20)
+//   .max(20)
+//   .step(0.001)
+//   .name("rotation x")
+//   .onFinishChange(() => {
+//     controls.update();
+//   });
+// gui
+//   .add(camera.rotation, "y")
+//   .min(-20)
+//   .max(20)
+//   .step(0.001)
+//   .name("rotation y")
+//   .onFinishChange(() => {
+//     controls.update();
+//   });
+
+// gui
+//   .add(camera.rotation, "z")
+//   .min(-20)
+//   .max(20)
+//   .step(0.001)
+//   .name("rotation z")
+//   .onFinishChange(() => {
+//     controls.update();
+//   });
+
+// gui
+//   .add(camera.quaternion, "x")
+//   .min(-20)
+//   .max(20)
+//   .step(0.001)
+//   .name("quaternion x")
+//   .onFinishChange(() => {
+//     controls.update();
+//   });
+// gui
+//   .add(camera.quaternion, "y")
+//   .min(-20)
+//   .max(20)
+//   .step(0.001)
+//   .name("quaternion y")
+//   .onFinishChange(() => {
+//     controls.update();
+//   });
+
+// gui
+//   .add(camera.quaternion, "z")
+//   .min(-20)
+//   .max(20)
+//   .step(0.001)
+//   .name("quaternion z")
+//   .onFinishChange(() => {
+//     controls.update();
+//   });
 
 const geral_mapa_group = new THREE.Group();
 const GroupCamera = new THREE.Group();
@@ -238,6 +344,17 @@ controls.target.set(
   cameraInitialTarget.y,
   cameraInitialTarget.z
 );
+
+// controls.addEventListener("change", onPositionChange);
+
+// function onPositionChange(evt) {
+//   var control = evt.target;
+//   console.log("control", control);
+//   console.log("control.target", control.target);
+//   console.log("control.object.position", control.object.position);
+//   console.log("control.object.rotation", control.object.rotation);
+//   console.log("control.object.quaternion", control.object.quaternion);
+// }
 
 /**
  * Renderer
@@ -287,6 +404,9 @@ window.addEventListener("keydown", function (event) {
     ctrlDown = true;
     controls.enabled = false;
     renderer.domElement.style.cursor = "crosshair";
+  }
+  if (event.key === "i") {
+    console.log("camera", camera);
   }
 });
 
@@ -378,7 +498,7 @@ function onClick() {
     // var tween = new TWEEN.Tween(position).to(target, 2000);
 
     const inBetween = new THREE.Vector3();
-    inBetween.lerpVectors(cameraInitialPosition, point, 0.5);
+    inBetween.lerpVectors(cameraInitialPosition, point, 0.8);
 
     // new TWEEN.Tween(camera.position)
     //   .to(
@@ -514,7 +634,7 @@ function onDocumentMouseMove(event: MouseEvent) {
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
   raycaster.setFromCamera(mouse, camera);
-  if (raycaster.params.Points) raycaster.params.Points.threshold = 0.05;
+  if (raycaster.params.Points) raycaster.params.Points.threshold = 0.25;
 
   let key: any; // Type is "one" | "two" | "three"
   for (key in overablebjectsLabels) {
@@ -574,7 +694,7 @@ const generateGeralPoints = () => {
       particlesGeometry,
       new THREE.PointsMaterial({
         map: new THREE.TextureLoader().load("./img/pontoInteresse.jpg"),
-        size: 0.1
+        size: 0.5
       })
     );
     // let whateverYouWant = new THREE.Vector3();
@@ -607,9 +727,8 @@ const generateGeralPoints = () => {
 const loadGeralMapa = () => {
   scene.remove(aguieiraMap);
   if (!geralMapa) {
-    console.log("load");
     gltfLoader.load(
-      "./models/VFX2.glb",
+      "./models/FINAL-3M-1A-LINHA-textura8k-more-light.glb",
       gltf => {
         gltf.scene.scale.set(0.01, 0.01, 0.01);
         gltf.scene.rotateX(-Math.PI / 2);
@@ -657,9 +776,9 @@ const loadGeralMapa = () => {
         updateAllMaterials();
       },
       xhr => {
-        console.log((xhr.loaded / 90957672) * 100 + "% loaded");
+        console.log((xhr.loaded / 100632460) * 100 + "% loaded");
         console.log("xhr", xhr);
-        loadingBar.style.width = (xhr.loaded / 90957672) * 100 - 1 + "%";
+        loadingBar.style.width = (xhr.loaded / 100632460) * 100 - 1 + "%";
       },
       error => {
         console.log(error);
@@ -678,7 +797,7 @@ const loadAguieiraMapa = () => {
     gltfLoader.load(
       "/models/AGUIEIRA-FINAL-V2-COMPRESSED.glb",
       gltf => {
-        gltf.scene.scale.set(0.01, 0.01, 0.01);
+        gltf.scene.scale.set(1, 1, 1);
         // gltf.scene.traverse(function (child) {
         //   if ((child as THREE.Mesh).isMesh) {
         //     const m = child as THREE.Mesh;
