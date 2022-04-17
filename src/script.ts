@@ -36,7 +36,7 @@ const gltfLoader = new GLTFLoader();
 // const gltfLoader = new THREE.GLTFLoader();
 // const cubeTextureLoader = new THREE.CubeTextureLoader();
 const textureLoader = new THREE.TextureLoader();
-const bgTexture = textureLoader.load("./img/bg2.jpg");
+const bgTexture = textureLoader.load("./img/bg3.jpg");
 
 /**
  * Base
@@ -609,7 +609,7 @@ const loadGeralMapa = () => {
   if (!geralMapa) {
     console.log("load");
     gltfLoader.load(
-      "./models/FINAL-4M-ALHANDRA.glb",
+      "./models/FINAL-2M-2A-LINHA.glb",
       gltf => {
         gltf.scene.scale.set(0.01, 0.01, 0.01);
         gltf.scene.rotateX(-Math.PI / 2);
