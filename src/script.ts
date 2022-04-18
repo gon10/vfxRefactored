@@ -24,7 +24,7 @@ let loadingDiv: HTMLDivElement = document.querySelector(
   "#loading"
 ) as HTMLDivElement;
 loadingDiv.style.background =
-  "white url('./img/alh.png') no-repeat center center";
+  "white url('./img/rh.jpg') no-repeat center center";
 let loadingBar: HTMLDivElement = document.querySelector(
   "#loading-bar"
 ) as HTMLDivElement;
@@ -36,7 +36,7 @@ const gltfLoader = new GLTFLoader();
 // const gltfLoader = new THREE.GLTFLoader();
 // const cubeTextureLoader = new THREE.CubeTextureLoader();
 const textureLoader = new THREE.TextureLoader();
-const bgTexture = textureLoader.load("./img/bg3.jpg");
+const bgTexture = textureLoader.load("./img/bg2.jpg");
 
 /**
  * Base
@@ -206,7 +206,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-const cameraInitialPosition: Vector3 = new Vector3(4, 0.5, -3);
+const cameraInitialPosition: Vector3 = new Vector3(-5.1, 0.5, 7.6);
 const cameraInitialTarget: Vector3 = new Vector3(0.66, -0.5, -2.8);
 camera.position.set(
   cameraInitialPosition.x,
@@ -609,7 +609,7 @@ const loadGeralMapa = () => {
   if (!geralMapa) {
     console.log("load");
     gltfLoader.load(
-      "./models/FINAL-2M-2A-LINHA.glb",
+      "./models/FINAL-2M-2A-LINHA-final.glb",
       gltf => {
         gltf.scene.scale.set(0.01, 0.01, 0.01);
         gltf.scene.rotateX(-Math.PI / 2);

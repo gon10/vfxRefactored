@@ -9,222 +9,102 @@ let AllPoints: Point[];
 
 export default AllPoints = [
   {
-    name: "Monumento da Casa do Forte",
+    name: "38 Forte da Casa",
     point: "1",
     position: {
-      x: 2.770101596539315,
-      y: -0.8,
-      z: -7.51854256312226
+      x: -3.8671533646199197,
+      y: -0.4,
+      z: 6.874889764390126
     },
     icon: "./img/pontoInteresse.jpg",
     url: "https://rhlt.cm-vfxira.pt/alhandra/casa-do-forte/"
   },
   {
-    name: "Jardim Joaquim Soeiro Pereira Gomes",
+    name: " 34 Forte do Cural",
     point: "2",
     position: {
-      x: 2.8328370758556596,
-      y: -0.8,
-      z: -6.820900469831566
+      x: -0.8190166681723763,
+      y: -0.7,
+      z: 5.853686364837253
     },
 
     icon: "./img/circuito.png",
     url: ""
   },
   {
-    name: "Casa das História",
+    name: "37 Forte da Abrunheira",
     point: "3",
     position: {
-      x: 2.6809196524605317,
-      y: -0.8,
-      z: -3.8302111368931024
+      x: -0.8072475127036463,
+      y: -0.9,
+      z: 7.387777947657675
     },
 
     icon: "./img/pontoInteresse.jpg",
     url: ""
   },
   {
-    name: "Escultura Homemagem a Soeiro Pereira Gomes",
+    name: "33 Forte do Salgado",
     point: "4",
     position: {
-      x: 2.8026330918299327,
-      y: -0.7,
-      z: -3.7678230093488834
+      x: 1.7844911295479045,
+      y: -0.9,
+      z: 8.116090706452157
     },
 
     icon: "./img/pontoInteresse.jpg",
     url: "https://rhlt.cm-vfxira.pt/alhandra/pereira/"
   },
   {
-    name: "Sociedade Eutherpe Alhandrense",
+    name: "35 Reduto da Quintela Pequeno",
     point: "5",
     position: {
-      x: 2.805253403294471,
-      y: -0.8,
-      z: -3.6521048017678623
+      x: -1.1374060313030614,
+      y: -0.3,
+      z: 1.2040857825093783
     },
 
     icon: "./img/pontoInteresse.jpg",
     url: "https://rhlt.cm-vfxira.pt/alhandra/euterpe/"
   },
   {
-    name: "Coreto de Alhandra",
+    name: "36 Reduto da Quintela Grande",
     point: "6",
     position: {
-      x: 2.5,
-      y: -0.8,
-      z: -3.9
+      x: -1.1755872331781665,
+      y: -0.2,
+      z: -0.4976053832080468
     },
 
     icon: "./img/pontoInteresse.jpg",
     url: "https://rhlt.cm-vfxira.pt/alhandra/coreto/"
   },
   {
-    name: "Monumento à Tauromaquia",
+    name: "39 Forte da Quintela Reentrante",
     point: "7",
-    position: { x: 3.113723677081667, y: -0.8, z: -3.3226303438833114 },
+    position: { x: -5.4235189875090395, y: -0.1, z: 3.412941979272015 },
 
     icon: "./img/pontoInteresse.jpg",
     url: "https://rhlt.cm-vfxira.pt/alhandra/tauromaquia/"
   },
   {
-    name: "Museu de Alhandra - Casa Dr. Sousa Martins",
+    name: "126 Forte Novo do Cabo",
     point: "8",
-    position: { x: 2.7299116185696244, y: -0.7, z: -1.8489459712789096 },
+    position: { x: -9.109914769899746, y: -0.1, z: 2.88133451178934 },
 
     icon: "./img/pontoInteresse.jpg",
     url: "https://rhlt.cm-vfxira.pt/alhandra/museu/"
-  },
-  {
-    name: "Cais de Alhandra / Avenida Batista Pereira",
-    point: "9",
-    position: {
-      x: 2.9783356847688047,
-      y: -0.8,
-      z: -1.3459953333383086
-    },
-
-    icon: "./img/pontoInteresse.jpg",
-    url: "https://rhlt.cm-vfxira.pt/alhandra/cais/"
-  },
-  {
-    name: "Mercado da Misericórdia de Alhandra",
-    point: "10",
-    position: {
-      x: 0.41819378491661896,
-      y: -0.75,
-      z: -2.843968412851032
-    },
-
-    icon: "./img/pontoInteresse.jpg",
-    url: "https://rhlt.cm-vfxira.pt/alhandra/mercado/"
-  },
-  {
-    name: "Pelourinho de Alhandra",
-    point: "11",
-    position: {
-      x: 0.646391816242098,
-      y: -0.8,
-      z: -2.873333854360339
-    },
-
-    icon: "./img/pontoInteresse.jpg",
-    url: "https://rhlt.cm-vfxira.pt/alhandra/pelourinho/"
-  },
-  {
-    name: "Busto Dr. Sousa Martins Baptista",
-    point: "12",
-    position: {
-      x: 0.8537007471780703,
-      y: -0.8,
-      z: -3.0863307596086
-    },
-
-    icon: "./img/pontoInteresse.jpg",
-    url: "https://rhlt.cm-vfxira.pt/alhandra/busto/"
-  },
-  {
-    name: "Associação do Hospital Civil e Misericórdia",
-    point: "13",
-    position: {
-      x: 0.8558042959551426,
-      y: -0.7,
-      z: -3.5221551093140513
-    },
-
-    icon: "./imgpontoInteresse.jpg",
-    url: "https://rhlt.cm-vfxira.pt/alhandra/hospital/"
-  },
-  {
-    name: "Igreja Matriz de São João Baptista de Alhandra",
-    point: "14",
-    position: {
-      x: 1.2562483302701966,
-      y: -0.4,
-      z: -5.406191435851841
-    },
-
-    icon: "./img/pontoInteresse.jpg",
-    url: "https://rhlt.cm-vfxira.pt/alhandra/igreja-matriz/"
-  },
-  {
-    name: "Caminho Ribeirinho Alhandra – Vila Franca de Xiraa",
-    point: "14",
-    position: {
-      x: 3.602570256638368,
-      y: -0.8,
-      z: -7.988396762059461
-    },
-
-    icon: "./img/pontoInteresse.jpg",
-    url: ""
-  },
-  {
-    name: "Chafariz Monumental",
-    point: "14",
-    position: {
-      x: 3.0247321625938497,
-      y: -0.8,
-      z: -9.009422836833378
-    },
-
-    icon: "./img/pontoInteresse.jpg",
-    url: ""
-  },
-  {
-    name: "Ermida de Nossa Senhora da Conceição do Portal",
-    point: "14",
-    position: {
-      x: 3.6920878460170923,
-      y: -0.8,
-      z: -10.346253967598882
-    },
-
-    icon: "./img/pontoInteresse.jpg",
-    url: "https://rhlt.cm-vfxira.pt/alhandra/ermida/"
-  },
-  {
-    name: "Batista Pereira – o herói da Mancha",
-    point: "14",
-    position: {
-      x: 3.378345033431602,
-      y: -0.8,
-      z: -6.153424715324269
-    },
-
-    icon: "./img/pontoInteresse.jpg",
-    url: ""
-  },
-  {
-    name: "Igreja de Nossa Senhora da Guia",
-    point: "14",
-    position: {
-      x: 1.294520140039701,
-      y: -0.7,
-      z: -3.9939931726948403
-    },
-
-    icon: "./img/pontoInteresse.jpg",
-    url: ""
   }
+  // {
+  //   name: "127 Forte do Moinho",
+  //   point: "9",
+  //   position: {
+  //     x: 2.9783356847688047,
+  //     y: -0.8,
+  //     z: -1.3459953333383086
+  //   },
+
+  //   icon: "./img/pontoInteresse.jpg",
+  //   url: "https://rhlt.cm-vfxira.pt/alhandra/cais/"
+  // },
 ];
