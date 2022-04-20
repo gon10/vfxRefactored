@@ -207,7 +207,7 @@ const camera = new THREE.PerspectiveCamera(
   100
 );
 const cameraInitialPosition: Vector3 = new Vector3(-5.1, 0.5, 7.6);
-const cameraInitialTarget: Vector3 = new Vector3(0.66, -0.5, -2.8);
+const cameraInitialTarget: Vector3 = new Vector3(-1.13, -0.3, 1.2);
 camera.position.set(
   cameraInitialPosition.x,
   cameraInitialPosition.y,
@@ -514,7 +514,7 @@ function onDocumentMouseMove(event: MouseEvent) {
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
   raycaster.setFromCamera(mouse, camera);
-  if (raycaster.params.Points) raycaster.params.Points.threshold = 0.05;
+  if (raycaster.params.Points) raycaster.params.Points.threshold = 0.2;
 
   let key: any; // Type is "one" | "two" | "three"
   for (key in overablebjectsLabels) {
@@ -574,7 +574,7 @@ const generateGeralPoints = () => {
       particlesGeometry,
       new THREE.PointsMaterial({
         map: new THREE.TextureLoader().load("./img/pontoInteresse.jpg"),
-        size: 0.1
+        size: 0.3
       })
     );
     // let whateverYouWant = new THREE.Vector3();
