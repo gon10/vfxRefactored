@@ -207,14 +207,14 @@ const camera = new THREE.PerspectiveCamera(
   100
 );
 const cameraInitialPosition: Vector3 = new Vector3(
-  -3.2475145280830073,
-  1.819939199066597,
-  12.230255702004671
+  -5.565852542864764,
+  1.5763235238772777,
+  11.85908407523163
 );
 const cameraInitialTarget: Vector3 = new Vector3(
-  -1.130115848885069,
-  -1.4811901270479464,
-  2.1188594247289583
+  -0.7720271754961046,
+  -0.005445965311954795,
+  2.260208604597011
 );
 camera.position.set(
   cameraInitialPosition.x,
@@ -241,6 +241,7 @@ controls.enableDamping = true;
   //   (controls.maxDistance = 9),
   //   (controls.dampingFactor = 0.05);
   (controls.enablePan = true);
+// Controls
 controls.target.set(
   cameraInitialTarget.x,
   cameraInitialTarget.y,
