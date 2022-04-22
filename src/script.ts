@@ -514,7 +514,7 @@ function onDocumentMouseMove(event: MouseEvent) {
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
   raycaster.setFromCamera(mouse, camera);
-  if (raycaster.params.Points) raycaster.params.Points.threshold = 0.2;
+  if (raycaster.params.Points) raycaster.params.Points.threshold = 0.4;
 
   let key: any; // Type is "one" | "two" | "three"
   for (key in overablebjectsLabels) {

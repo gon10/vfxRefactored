@@ -9,7 +9,7 @@ let AllPoints: Point[];
 
 export default AllPoints = [
   {
-    name: "38 Forte da Casa",
+    name: "Obra Militar nº 38 - Forte da Casa",
     point: "1",
     position: {
       x: -3.8671533646199197,
@@ -17,10 +17,10 @@ export default AllPoints = [
       z: 6.874889764390126
     },
     icon: "./img/pontoInteresse.jpg",
-    url: "https://rhlt.cm-vfxira.pt/alhandra/casa-do-forte/"
+    url: "https://rhlt.cm-vfxira.pt/fortecasa/om38"
   },
   {
-    name: " 34 Forte do Cural",
+    name: "Obra Militar N.º 34 - Quintela da Estrada ou Forte do Curral",
     point: "2",
     position: {
       x: -0.8190166681723763,
@@ -29,10 +29,10 @@ export default AllPoints = [
     },
 
     icon: "./img/circuito.png",
-    url: ""
+    url: "https://rhlt.cm-vfxira.pt/fortecasa/om34"
   },
   {
-    name: "37 Forte da Abrunheira",
+    name: "Obra Militar N.º 37 - Forte da Abrunheira",
     point: "3",
     position: {
       x: -0.8072475127036463,
@@ -41,10 +41,10 @@ export default AllPoints = [
     },
 
     icon: "./img/pontoInteresse.jpg",
-    url: ""
+    url: "https://rhlt.cm-vfxira.pt/fortecasa/om37"
   },
   {
-    name: "33 Forte do Salgado",
+    name: "Obra Militar N.º 33 - Forte do Salgado",
     point: "4",
     position: {
       x: 1.7844911295479045,
@@ -53,10 +53,10 @@ export default AllPoints = [
     },
 
     icon: "./img/pontoInteresse.jpg",
-    url: "https://rhlt.cm-vfxira.pt/alhandra/pereira/"
+    url: "https://rhlt.cm-vfxira.pt/fortecasa/om33"
   },
   {
-    name: "35 Reduto da Quintela Pequeno",
+    name: "Obra Militar nº 35 - Forte da Quintela Pequena",
     point: "5",
     position: {
       x: -1.1374060313030614,
@@ -65,10 +65,10 @@ export default AllPoints = [
     },
 
     icon: "./img/pontoInteresse.jpg",
-    url: "https://rhlt.cm-vfxira.pt/alhandra/euterpe/"
+    url: "https://rhlt.cm-vfxira.pt/fortecasa/om35"
   },
   {
-    name: "36 Reduto da Quintela Grande",
+    name: "Obra militar nº 36 - Forte da Quintela Grande",
     point: "6",
     position: {
       x: -1.1755872331781665,
@@ -77,23 +77,23 @@ export default AllPoints = [
     },
 
     icon: "./img/pontoInteresse.jpg",
-    url: "https://rhlt.cm-vfxira.pt/alhandra/coreto/"
+    url: "https://rhlt.cm-vfxira.pt/fortecasa/om36"
   },
   {
-    name: "39 Forte da Quintela Reentrante",
+    name: "Obra Militar nº 39 - Reduto do Reentrante",
     point: "7",
     position: { x: -5.4235189875090395, y: -0.1, z: 3.412941979272015 },
 
     icon: "./img/pontoInteresse.jpg",
-    url: "https://rhlt.cm-vfxira.pt/alhandra/tauromaquia/"
+    url: "https://rhlt.cm-vfxira.pt/fortecasa/om39"
   },
   {
-    name: "126 Forte Novo do Cabo",
+    name: "Obra Militar N.º 126 - Forte da Arroteia",
     point: "8",
     position: { x: -9.109914769899746, y: -0.1, z: 2.88133451178934 },
 
     icon: "./img/pontoInteresse.jpg",
-    url: "https://rhlt.cm-vfxira.pt/alhandra/museu/"
+    url: "https://rhlt.cm-vfxira.pt/vialonga/om126"
   }
   // {
   //   name: "127 Forte do Moinho",
