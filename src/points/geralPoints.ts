@@ -9,7 +9,7 @@ let AllPoints: Point[];
 
 export default AllPoints = [
   {
-    name: "A bateria do tejo",
+    name: "1-A bateria do tejo",
     point: "1",
     position: {
       x: 30.23053074761363,
@@ -20,7 +20,7 @@ export default AllPoints = [
     url: ""
   },
   {
-    name: "Entrincheiramento",
+    name: "1-B Entrincheiramento",
     point: "2",
     position: {
       x: 28.59148176356971,
@@ -32,7 +32,7 @@ export default AllPoints = [
     url: "https://rhlt.cm-vfxira.pt/vfx/varina"
   },
   {
-    name: "Bateria da estrada",
+    name: "1-C Bateria da estrada",
     point: "3",
     position: {
       x: 26.761283898373755,
@@ -44,7 +44,7 @@ export default AllPoints = [
     url: ""
   },
   {
-    name: "Bateria da estrada",
+    name: "1-D Bateria da estrada",
     point: "4",
     position: {
       x: 26.8544306961076,
@@ -56,7 +56,7 @@ export default AllPoints = [
     url: ""
   },
   {
-    name: "Bateria da estrada",
+    name: "1-E Bateria da estrada real",
     point: "5",
     position: {
       x: 26.518229008302768,
@@ -68,15 +68,15 @@ export default AllPoints = [
     url: ""
   },
   {
-    name: "Bateria da estrada",
+    name: "Monumento",
     point: "5",
-    position: { x: 23.828988623279667, y: 0.4, z: 17.730215821113983 },
+    position: { x: 23.57153364592216, y: 0.4, z: 16.717983993564314 },
 
     icon: "./img/pontoInteresse.jpg",
     url: ""
   },
   {
-    name: "Bateria da subida",
+    name: "1-F Bateria da subida",
     point: "6",
     position: {
       x: 24.216891565755297,
@@ -88,7 +88,7 @@ export default AllPoints = [
     url: ""
   },
   {
-    name: "Bateria do Conde",
+    name: "2 Bateria do Conde",
     point: "7",
     position: {
       x: 23.1736427868142,
@@ -100,7 +100,7 @@ export default AllPoints = [
     url: "https://exposicoes.cm-vfxira.pt/oculistanunes/"
   },
   {
-    name: "Reduto da Boavista",
+    name: "3 Reduto da Boavista",
     point: "8",
     position: {
       x: 22.547911521485112,
@@ -112,7 +112,7 @@ export default AllPoints = [
     url: ""
   },
   {
-    name: "Bateria do S. Fernando",
+    name: "4 Bateria do S. Fernando",
     point: "9",
     position: {
       x: 22.198731060284317,
@@ -124,7 +124,7 @@ export default AllPoints = [
     url: ""
   },
   {
-    name: "Forte 1º de Subserra",
+    name: "114 Forte 1º de Subserra",
     point: "10",
     position: { x: 17.021444903472425, y: 0.8, z: 16.422024812458158 },
 
@@ -132,7 +132,7 @@ export default AllPoints = [
     url: ""
   },
   {
-    name: "Bateria nova de Subserra",
+    name: "114-A Bateria Nova de Subserra",
     point: "11",
     position: {
       x: 14.006451087141238,
@@ -144,7 +144,7 @@ export default AllPoints = [
     url: ""
   },
   {
-    name: "Forte 2º de Subserra",
+    name: "115 Forte 2º de Subserra",
     point: "12",
     position: {
       x: 4.031474474898191,
@@ -156,7 +156,7 @@ export default AllPoints = [
     url: "https://rhlt.cm-vfxira.pt/vfx/mario-coelho"
   },
   {
-    name: "Forte 3º de Subserra",
+    name: "116 Forte 3º de Subserra",
     point: "13",
     position: { x: 1.7729593588224801, y: 2.1, z: 7.116445396500171 },
 
@@ -164,7 +164,7 @@ export default AllPoints = [
     url: "https://exposicoes.cm-vfxira.pt/casamuseumariocoelho"
   },
   {
-    name: "Bateria Anexa ao Forte 3º de Subserra",
+    name: "116-A Bateria Anexa ao Forte 3º de Subserra",
     point: "14",
     position: { x: 2.398053161855468, y: 1.8, z: 6.523440874041707 },
 
@@ -172,7 +172,7 @@ export default AllPoints = [
     url: ""
   },
   {
-    name: "Bateria do Casal da Entrega",
+    name: "116-B Bateria do Casal da Entrega",
     point: "14",
     position: { x: 2.486458492334099, y: 1.7, z: 5.3366029659148175 },
 
@@ -180,7 +180,7 @@ export default AllPoints = [
     url: ""
   },
   {
-    name: "Reduto Novo da Costa da Feira",
+    name: "117 Reduto Novo da Costa da Feira",
     point: "14",
     position: { x: -0.6109221435383516, y: 2.3, z: 3.3659116713200437 },
 
@@ -188,7 +188,7 @@ export default AllPoints = [
     url: ""
   },
   {
-    name: "Forte dos Sinais (Forte do Moinho Branco)",
+    name: "118 Forte dos Sinais (Forte do Moinho Branco)",
     point: "14",
     position: { x: -2.373377076635828, y: 2.4, z: 5.351952588606054 },
 
@@ -196,7 +196,7 @@ export default AllPoints = [
     url: ""
   },
   {
-    name: "Forte Novo do Formoso",
+    name: "120 Forte da Serra do Formoso",
     point: "14",
     position: { x: -6.730727773175402, y: 2.4, z: -0.5198298203711764 },
 
@@ -204,7 +204,7 @@ export default AllPoints = [
     url: ""
   },
   {
-    name: "Forte da Serra do Formoso",
+    name: "5 Forte Novo do Formoso",
     point: "14",
     position: { x: -7.5556202770984155, y: 2.4, z: -0.7422221493926707 },
 
@@ -212,7 +212,7 @@ export default AllPoints = [
     url: ""
   },
   {
-    name: "Reduto dos Dois Moinhos",
+    name: "119 Reduto dos Dois Moinhos",
     point: "14",
     position: { x: -8.84753939561242, y: 2.1, z: 8.532407786151802 },
 
@@ -220,7 +220,7 @@ export default AllPoints = [
     url: ""
   },
   {
-    name: "Bateria da Subida da Serra",
+    name: "119-B Bateria da Subida da Serra",
     point: "14",
     position: { x: -13.246875442489198, y: 1.1, z: 10.409754978023498 },
 
@@ -228,7 +228,7 @@ export default AllPoints = [
     url: ""
   },
   {
-    name: "Bateria dos Melros",
+    name: "6 Bateria dos Melros",
     point: "14",
     position: { x: -12.657366631424296, y: 0.9, z: 14.501919086605678 },
 
