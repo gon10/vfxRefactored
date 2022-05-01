@@ -374,104 +374,22 @@ function onClick() {
     // overablebjectsLabels[intersects[0].object.id].element.className =
     //   "measurementLabel";
 
-    if (intersects[0].object.name === "Geral") {
-      console.log("load Geral");
-      loadGeralMapa();
-    } else if (intersects[0].object.name === "Aguieira") {
-      console.log("load Aguieira");
-      loadAguieiraMapa();
-    }
-    const obj = intersects[0].object;
+    // if (intersects[0].object.name === "Geral") {
+    //   console.log("load Geral");
+    //   loadGeralMapa();
+    // } else if (intersects[0].object.name === "Aguieira") {
+    //   console.log("load Aguieira");
+    //   loadAguieiraMapa();
+    // }
+    const obj = intersects[0].object as THREE.Points;
     const point = intersects[0].point;
+
+    console.log({ obj });
+    console.log({ point });
     // controls.target.set(p.x, p.y, p.z);
     // var tween = new TWEEN.Tween(position).to(target, 2000);
 
-    const inBetween = new THREE.Vector3();
-    inBetween.lerpVectors(cameraInitialPosition, point, 0.5);
-
-    // new TWEEN.Tween(camera.position)
-    //   .to(
-    //     {
-    //       x: cameraInitialPosition.x,
-    //       y: cameraInitialPosition.y,
-    //       z: cameraInitialPosition.z
-    //     },
-    //     1500
-    //   )
-    //   //.delay (1000)
-    //   .easing(TWEEN.Easing.Cubic.Out)
-    //   //.onUpdate(() => render())
-    //   .start()
-    //   .onComplete(() => {
-    //     new TWEEN.Tween(camera.position)
-    //       .to(
-    //         {
-    //           x: inBetween.x,
-    //           y: inBetween.y,
-    //           z: inBetween.z
-    //         },
-    //         1500
-    //       )
-    //       //.delay (1000)
-    //       .easing(TWEEN.Easing.Cubic.Out)
-    //       //.onUpdate(() => render())
-    //       .start()
-    //       .onComplete(() => {
-    //         console.log("controls.target to", point);
-    //         console.log("completed tween", locationLabel, obj);
-    //         locationLabel.innerHTML = `${obj.name} <br> <span>visitar</span>`;
-    //         locationLabel.classList.remove("d-none");
-    //         controls.update();
-    //       });
-    //     controls.update();
-    //   });
-    new TWEEN.Tween(camera.position)
-      .to(
-        {
-          x: inBetween.x,
-          y: inBetween.y,
-          z: inBetween.z,
-        },
-        1500
-      )
-      //.delay (1000)
-      .easing(TWEEN.Easing.Cubic.Out)
-      //.onUpdate(() => render())
-      .start()
-      .onStart(() => {
-        locationLabel.classList.add("d-none");
-        locationLabel.removeEventListener("click", openNewTab);
-      })
-      .onComplete(() => {
-        console.log("controls.target to", point);
-        console.log("completed tween camera pos", locationLabel, obj);
-        locationLabel.innerHTML = `${obj.name} <br> <span>visitar</span>`;
-        locationLabel.classList.remove("d-none");
-        selectedPoint = obj;
-        locationLabel.addEventListener("click", openNewTab);
-        controls.update();
-      });
-
-    new TWEEN.Tween(controls.target)
-      .to(
-        {
-          x: point.x,
-          y: point.y,
-          z: point.z,
-        },
-        1500
-      )
-      //.delay (1000)
-      .easing(TWEEN.Easing.Cubic.Out)
-      //.onUpdate(() => render())
-      .start()
-      .onComplete(() => {
-        console.log("controls.target to", point);
-        console.log("completed tween", locationLabel, obj);
-        locationLabel.innerHTML = `${obj.name} <br> <span>visitar</span>`;
-        locationLabel.classList.remove("d-none");
-        controls.update();
-      });
+    travelToPoint(point, obj);
   } else {
     if (!locationLabel.classList.contains("d-none")) {
       new TWEEN.Tween(controls.target)
@@ -510,6 +428,97 @@ function onClick() {
   }
 }
 
+const travelToPoint = (point: THREE.Vector3, obj: THREE.Points) => {
+  console.log({ point });
+  console.log({ obj });
+  const inBetween = new THREE.Vector3();
+  inBetween.lerpVectors(cameraInitialPosition, point, 0.5);
+
+  // new TWEEN.Tween(camera.position)
+  //   .to(
+  //     {
+  //       x: cameraInitialPosition.x,
+  //       y: cameraInitialPosition.y,
+  //       z: cameraInitialPosition.z
+  //     },
+  //     1500
+  //   )
+  //   //.delay (1000)
+  //   .easing(TWEEN.Easing.Cubic.Out)
+  //   //.onUpdate(() => render())
+  //   .start()
+  //   .onComplete(() => {
+  //     new TWEEN.Tween(camera.position)
+  //       .to(
+  //         {
+  //           x: inBetween.x,
+  //           y: inBetween.y,
+  //           z: inBetween.z
+  //         },
+  //         1500
+  //       )
+  //       //.delay (1000)
+  //       .easing(TWEEN.Easing.Cubic.Out)
+  //       //.onUpdate(() => render())
+  //       .start()
+  //       .onComplete(() => {
+  //         console.log("controls.target to", point);
+  //         console.log("completed tween", locationLabel, obj);
+  //         locationLabel.innerHTML = `${obj.name} <br> <span>visitar</span>`;
+  //         locationLabel.classList.remove("d-none");
+  //         controls.update();
+  //       });
+  //     controls.update();
+  //   });
+  new TWEEN.Tween(camera.position)
+    .to(
+      {
+        x: inBetween.x,
+        y: inBetween.y,
+        z: inBetween.z,
+      },
+      1500
+    )
+    //.delay (1000)
+    .easing(TWEEN.Easing.Cubic.Out)
+    //.onUpdate(() => render())
+    .start()
+    .onStart(() => {
+      locationLabel.classList.add("d-none");
+      locationLabel.removeEventListener("click", openNewTab);
+    })
+    .onComplete(() => {
+      console.log("controls.target to", point);
+      console.log("completed tween camera pos", locationLabel, obj);
+      locationLabel.innerHTML = `${obj.name} <br> <span>visitar</span>`;
+      locationLabel.classList.remove("d-none");
+      selectedPoint = obj;
+      locationLabel.addEventListener("click", openNewTab);
+      controls.update();
+    });
+
+  new TWEEN.Tween(controls.target)
+    .to(
+      {
+        x: point.x,
+        y: point.y,
+        z: point.z,
+      },
+      1500
+    )
+    //.delay (1000)
+    .easing(TWEEN.Easing.Cubic.Out)
+    //.onUpdate(() => render())
+    .start()
+    .onComplete(() => {
+      console.log("controls.target to", point);
+      console.log("completed tween", locationLabel, obj);
+      locationLabel.innerHTML = `${obj.name} <br> <span>visitar</span>`;
+      locationLabel.classList.remove("d-none");
+      controls.update();
+    });
+};
+
 const openNewTab = function (event) {
   if (selectedPoint?.userData?.url)
     window.open(selectedPoint.userData.url, "_blank");
@@ -532,7 +541,7 @@ function onDocumentMouseMove(event: MouseEvent) {
 
   intersects = raycaster.intersectObjects(overablebjects, false);
   if (intersects.length > 0) {
-    console.log("intersects", intersects);
+    // console.log("intersects", intersects);
     overablebjectsLabels[intersects[0].object.id].element.className =
       "measurementLabel";
     overablebjectsLabels[intersects[0].object.id].position.set(
@@ -664,6 +673,9 @@ const loadGeralMapa = () => {
         loadingDiv.style.display = "none";
 
         updateAllMaterials();
+
+        document.getElementById("myInput")?.classList.add("show");
+        populateDropdown();
       },
       (xhr) => {
         console.log((xhr.loaded / 125074916) * 100 + "% loaded");
@@ -729,6 +741,21 @@ const loadAguieiraMapa = () => {
 
 loadGeralMapa();
 
+let base = new THREE.Mesh(
+  new THREE.CircleGeometry(25, 50),
+  new THREE.MeshBasicMaterial({
+    map: new THREE.TextureLoader().load("./img/map-texture.jpg"),
+    side: THREE.DoubleSide,
+  })
+);
+(base.rotation.x = -Math.PI / 2),
+  (base.rotation.z = -Math.PI / 2),
+  // (base.rotation.y = -Math.PI / 2),
+  (base.position.y = -1.2),
+  (base.position.z = -0.7),
+  (base.position.x = -1.5),
+  scene.add(base);
+
 // setTimeout(loadAguieiraMapa, 6000);
 
 // const stats = Stats();
@@ -752,3 +779,56 @@ const tick = () => {
   window.requestAnimationFrame(tick);
 };
 tick();
+
+const populateDropdown = () => {
+  let div = document.getElementById("myDropdown");
+  geralPoints.map((point) => {
+    const a = document.createElement("a");
+    a.addEventListener("click", () => {
+      let obj = overablebjects.find((ele) => {
+        return ele.name == a.innerHTML;
+      }) as THREE.Points;
+      travelToPoint(
+        new THREE.Vector3(
+          point?.position.x,
+          point?.position.y,
+          point?.position.z
+        ),
+        obj
+      );
+      let myInput = document?.getElementById("myInput") as HTMLInputElement;
+      myInput.value = a.innerHTML;
+      window.myFunction();
+    });
+
+    a.innerHTML = point.name;
+    div?.appendChild(a);
+  });
+};
+
+declare global {
+  interface Window {
+    myFunction: Function;
+    filterFunction: Function;
+  }
+}
+
+window.myFunction = () => {
+  document.getElementById("myDropdown")?.classList.toggle("show");
+};
+
+window.filterFunction = () => {
+  let input, filter, ul, li, a, i, div, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+};
