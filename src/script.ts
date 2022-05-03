@@ -7,7 +7,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import Stats from "three/examples/jsm/libs/stats.module";
 import {
   CSS2DRenderer,
-  CSS2DObject,
+  CSS2DObject
 } from "three/examples/jsm/renderers/CSS2DRenderer";
 import geralPoints from "./points/geralPoints";
 import { TWEEN } from "three/examples/jsm/libs/tween.module.min";
@@ -24,7 +24,7 @@ let loadingDiv: HTMLDivElement = document.querySelector(
   "#loading"
 ) as HTMLDivElement;
 loadingDiv.style.background =
-  "white url('./img/rh.jpg') no-repeat center center";
+  "white url('./img/gif.gif') no-repeat center center";
 let loadingBar: HTMLDivElement = document.querySelector(
   "#loading-bar"
 ) as HTMLDivElement;
@@ -59,7 +59,7 @@ scene.background = bgTexture;
  * Update all materials
  */
 const updateAllMaterials = () => {
-  scene.traverse((child) => {
+  scene.traverse(child => {
     if (
       child instanceof THREE.Mesh &&
       child.material instanceof THREE.MeshStandardMaterial
@@ -177,7 +177,7 @@ scene.add(ambientLight);
  */
 const sizes = {
   width: window.innerWidth,
-  height: window.innerHeight,
+  height: window.innerHeight
 };
 
 window.addEventListener("resize", () => {
@@ -253,7 +253,7 @@ controls.target.set(
  */
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
-  antialias: true,
+  antialias: true
 });
 renderer.physicallyCorrectLights = true;
 renderer.outputEncoding = THREE.sRGBEncoding;
@@ -338,7 +338,7 @@ function onClick() {
           new THREE.LineBasicMaterial({
             color: 0xffffff,
             transparent: true,
-            opacity: 0.75,
+            opacity: 0.75
             // depthTest: false,
             // depthWrite: false
           })
@@ -397,7 +397,7 @@ function onClick() {
           {
             x: cameraInitialTarget.x,
             y: cameraInitialTarget.y,
-            z: cameraInitialTarget.z,
+            z: cameraInitialTarget.z
           },
           1500
         )
@@ -412,7 +412,7 @@ function onClick() {
           {
             x: cameraInitialPosition.x,
             y: cameraInitialPosition.y,
-            z: cameraInitialPosition.z,
+            z: cameraInitialPosition.z
           },
           1500
         )
@@ -475,7 +475,7 @@ const travelToPoint = (point: THREE.Vector3, obj: THREE.Points) => {
       {
         x: inBetween.x,
         y: inBetween.y,
-        z: inBetween.z,
+        z: inBetween.z
       },
       1500
     )
@@ -502,7 +502,7 @@ const travelToPoint = (point: THREE.Vector3, obj: THREE.Points) => {
       {
         x: point.x,
         y: point.y,
-        z: point.z,
+        z: point.z
       },
       1500
     )
@@ -575,7 +575,7 @@ function onDocumentMouseMove(event: MouseEvent) {
 }
 
 const generateGeralPoints = () => {
-  geralPoints.forEach((geralPoint) => {
+  geralPoints.forEach(geralPoint => {
     const particlesGeometry = new THREE.BufferGeometry();
 
     const positions = new Float32Array(3);
@@ -592,7 +592,7 @@ const generateGeralPoints = () => {
       particlesGeometry,
       new THREE.PointsMaterial({
         map: new THREE.TextureLoader().load("./img/pontoInteresse.jpg"),
-        size: 0.3,
+        size: 0.3
       })
     );
     // let whateverYouWant = new THREE.Vector3();
@@ -628,7 +628,7 @@ const loadGeralMapa = () => {
     console.log("load");
     gltfLoader.load(
       "./models/FINAL-2M-2A-LINHA-final.glb",
-      (gltf) => {
+      gltf => {
         gltf.scene.scale.set(0.01, 0.01, 0.01);
         gltf.scene.rotateX(-Math.PI / 2);
         gltf.scene.traverse(function (child) {
@@ -677,12 +677,12 @@ const loadGeralMapa = () => {
         document.getElementById("myInput")?.classList.add("show");
         populateDropdown();
       },
-      (xhr) => {
-        console.log((xhr.loaded / 125074916) * 100 + "% loaded");
+      xhr => {
+        console.log((xhr.loaded / 69987060) * 100 + "% loaded");
         console.log("xhr", xhr);
-        loadingBar.style.width = (xhr.loaded / 125074916) * 100 - 1 + "%";
+        loadingBar.style.width = (xhr.loaded / 69987060) * 100 - 1 + "%";
       },
-      (error) => {
+      error => {
         console.log(error);
       }
     );
@@ -698,7 +698,7 @@ const loadAguieiraMapa = () => {
     console.log("load");
     gltfLoader.load(
       "/models/AGUIEIRA-FINAL-V2-COMPRESSED.glb",
-      (gltf) => {
+      gltf => {
         gltf.scene.scale.set(0.01, 0.01, 0.01);
         // gltf.scene.traverse(function (child) {
         //   if ((child as THREE.Mesh).isMesh) {
@@ -725,11 +725,11 @@ const loadAguieiraMapa = () => {
 
         // updateAllMaterials();
       },
-      (xhr) => {
+      xhr => {
         // console.log(xhr);
         console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
       },
-      (error) => {
+      error => {
         console.log(error);
       }
     );
@@ -741,20 +741,20 @@ const loadAguieiraMapa = () => {
 
 loadGeralMapa();
 
-let base = new THREE.Mesh(
-  new THREE.CircleGeometry(25, 50),
-  new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load("./img/map-texture.jpg"),
-    side: THREE.DoubleSide,
-  })
-);
-(base.rotation.x = -Math.PI / 2),
-  (base.rotation.z = -Math.PI / 2),
-  // (base.rotation.y = -Math.PI / 2),
-  (base.position.y = -1.2),
-  (base.position.z = -0.7),
-  (base.position.x = -1.5),
-  scene.add(base);
+// let base = new THREE.Mesh(
+//   new THREE.CircleGeometry(25, 50),
+//   new THREE.MeshBasicMaterial({
+//     map: new THREE.TextureLoader().load("./img/map-texture.jpg"),
+//     side: THREE.DoubleSide
+//   })
+// );
+// (base.rotation.x = -Math.PI / 2),
+//   (base.rotation.z = -Math.PI / 2),
+//   // (base.rotation.y = -Math.PI / 2),
+//   (base.position.y = -1.2),
+//   (base.position.z = -0.7),
+//   (base.position.x = -1.5),
+//   scene.add(base);
 
 // setTimeout(loadAguieiraMapa, 6000);
 
@@ -782,10 +782,10 @@ tick();
 
 const populateDropdown = () => {
   let div = document.getElementById("myDropdown");
-  geralPoints.map((point) => {
+  geralPoints.map(point => {
     const a = document.createElement("a");
     a.addEventListener("click", () => {
-      let obj = overablebjects.find((ele) => {
+      let obj = overablebjects.find(ele => {
         return ele.name == a.innerHTML;
       }) as THREE.Points;
       travelToPoint(
