@@ -221,104 +221,6 @@ camera.position.set(
   cameraInitialPosition.y,
   cameraInitialPosition.z
 );
-camera.rotation.set(
-  -0.9441106069943968,
-  -0.09187005784686986,
-  -0.12603344741549677
-);
-camera.quaternion.set(
-  -0.45076101750594444,
-  -0.06942146608604258,
-  -0.03518995043466064,
-  0.8892450913735067
-);
-
-// gui
-//   .add(camera.position, "x")
-//   .min(-20)
-//   .max(20)
-//   .step(0.001)
-//   .name("position x")
-//   .onFinishChange(() => {
-//     controls.update();
-//   });
-// gui
-//   .add(camera.position, "y")
-//   .min(-20)
-//   .max(20)
-//   .step(0.001)
-//   .name("position y")
-//   .onFinishChange(() => {
-//     controls.update();
-//   });
-
-// gui
-//   .add(camera.position, "z")
-//   .min(-20)
-//   .max(20)
-//   .step(0.001)
-//   .name("position z")
-//   .onFinishChange(() => {
-//     controls.update();
-//   });
-
-// gui
-//   .add(camera.rotation, "x")
-//   .min(-20)
-//   .max(20)
-//   .step(0.001)
-//   .name("rotation x")
-//   .onFinishChange(() => {
-//     controls.update();
-//   });
-// gui
-//   .add(camera.rotation, "y")
-//   .min(-20)
-//   .max(20)
-//   .step(0.001)
-//   .name("rotation y")
-//   .onFinishChange(() => {
-//     controls.update();
-//   });
-
-// gui
-//   .add(camera.rotation, "z")
-//   .min(-20)
-//   .max(20)
-//   .step(0.001)
-//   .name("rotation z")
-//   .onFinishChange(() => {
-//     controls.update();
-//   });
-
-// gui
-//   .add(camera.quaternion, "x")
-//   .min(-20)
-//   .max(20)
-//   .step(0.001)
-//   .name("quaternion x")
-//   .onFinishChange(() => {
-//     controls.update();
-//   });
-// gui
-//   .add(camera.quaternion, "y")
-//   .min(-20)
-//   .max(20)
-//   .step(0.001)
-//   .name("quaternion y")
-//   .onFinishChange(() => {
-//     controls.update();
-//   });
-
-// gui
-//   .add(camera.quaternion, "z")
-//   .min(-20)
-//   .max(20)
-//   .step(0.001)
-//   .name("quaternion z")
-//   .onFinishChange(() => {
-//     controls.update();
-//   });
 
 const geral_mapa_group = new THREE.Group();
 const GroupCamera = new THREE.Group();
@@ -339,22 +241,12 @@ controls.enableDamping = true;
   //   (controls.maxDistance = 9),
   //   (controls.dampingFactor = 0.05);
   (controls.enablePan = true);
+// Controls
 controls.target.set(
   cameraInitialTarget.x,
   cameraInitialTarget.y,
   cameraInitialTarget.z
 );
-
-// controls.addEventListener("change", onPositionChange);
-
-// function onPositionChange(evt) {
-//   var control = evt.target;
-//   console.log("control", control);
-//   console.log("control.target", control.target);
-//   console.log("control.object.position", control.object.position);
-//   console.log("control.object.rotation", control.object.rotation);
-//   console.log("control.object.quaternion", control.object.quaternion);
-// }
 
 /**
  * Renderer
@@ -404,9 +296,6 @@ window.addEventListener("keydown", function (event) {
     ctrlDown = true;
     controls.enabled = false;
     renderer.domElement.style.cursor = "crosshair";
-  }
-  if (event.key === "i") {
-    console.log("camera", camera);
   }
 });
 
@@ -485,104 +374,22 @@ function onClick() {
     // overablebjectsLabels[intersects[0].object.id].element.className =
     //   "measurementLabel";
 
-    if (intersects[0].object.name === "Geral") {
-      console.log("load Geral");
-      loadGeralMapa();
-    } else if (intersects[0].object.name === "Aguieira") {
-      console.log("load Aguieira");
-      loadAguieiraMapa();
-    }
-    const obj = intersects[0].object;
+    // if (intersects[0].object.name === "Geral") {
+    //   console.log("load Geral");
+    //   loadGeralMapa();
+    // } else if (intersects[0].object.name === "Aguieira") {
+    //   console.log("load Aguieira");
+    //   loadAguieiraMapa();
+    // }
+    const obj = intersects[0].object as THREE.Points;
     const point = intersects[0].point;
+
+    console.log({ obj });
+    console.log({ point });
     // controls.target.set(p.x, p.y, p.z);
     // var tween = new TWEEN.Tween(position).to(target, 2000);
 
-    const inBetween = new THREE.Vector3();
-    inBetween.lerpVectors(cameraInitialPosition, point, 0.8);
-
-    // new TWEEN.Tween(camera.position)
-    //   .to(
-    //     {
-    //       x: cameraInitialPosition.x,
-    //       y: cameraInitialPosition.y,
-    //       z: cameraInitialPosition.z
-    //     },
-    //     1500
-    //   )
-    //   //.delay (1000)
-    //   .easing(TWEEN.Easing.Cubic.Out)
-    //   //.onUpdate(() => render())
-    //   .start()
-    //   .onComplete(() => {
-    //     new TWEEN.Tween(camera.position)
-    //       .to(
-    //         {
-    //           x: inBetween.x,
-    //           y: inBetween.y,
-    //           z: inBetween.z
-    //         },
-    //         1500
-    //       )
-    //       //.delay (1000)
-    //       .easing(TWEEN.Easing.Cubic.Out)
-    //       //.onUpdate(() => render())
-    //       .start()
-    //       .onComplete(() => {
-    //         console.log("controls.target to", point);
-    //         console.log("completed tween", locationLabel, obj);
-    //         locationLabel.innerHTML = `${obj.name} <br> <span>visitar</span>`;
-    //         locationLabel.classList.remove("d-none");
-    //         controls.update();
-    //       });
-    //     controls.update();
-    //   });
-    new TWEEN.Tween(camera.position)
-      .to(
-        {
-          x: inBetween.x,
-          y: inBetween.y,
-          z: inBetween.z
-        },
-        1500
-      )
-      //.delay (1000)
-      .easing(TWEEN.Easing.Cubic.Out)
-      //.onUpdate(() => render())
-      .start()
-      .onStart(() => {
-        locationLabel.classList.add("d-none");
-        locationLabel.removeEventListener("click", openNewTab);
-      })
-      .onComplete(() => {
-        console.log("controls.target to", point);
-        console.log("completed tween camera pos", locationLabel, obj);
-        locationLabel.innerHTML = `${obj.name} <br> <span>visitar</span>`;
-        locationLabel.classList.remove("d-none");
-        selectedPoint = obj;
-        locationLabel.addEventListener("click", openNewTab);
-        controls.update();
-      });
-
-    new TWEEN.Tween(controls.target)
-      .to(
-        {
-          x: point.x,
-          y: point.y,
-          z: point.z
-        },
-        1500
-      )
-      //.delay (1000)
-      .easing(TWEEN.Easing.Cubic.Out)
-      //.onUpdate(() => render())
-      .start()
-      .onComplete(() => {
-        console.log("controls.target to", point);
-        console.log("completed tween", locationLabel, obj);
-        locationLabel.innerHTML = `${obj.name} <br> <span>visitar</span>`;
-        locationLabel.classList.remove("d-none");
-        controls.update();
-      });
+    travelToPoint(point, obj);
   } else {
     if (!locationLabel.classList.contains("d-none")) {
       new TWEEN.Tween(controls.target)
@@ -621,6 +428,97 @@ function onClick() {
   }
 }
 
+const travelToPoint = (point: THREE.Vector3, obj: THREE.Points) => {
+  console.log({ point });
+  console.log({ obj });
+  const inBetween = new THREE.Vector3();
+  inBetween.lerpVectors(cameraInitialPosition, point, 0.5);
+
+  // new TWEEN.Tween(camera.position)
+  //   .to(
+  //     {
+  //       x: cameraInitialPosition.x,
+  //       y: cameraInitialPosition.y,
+  //       z: cameraInitialPosition.z
+  //     },
+  //     1500
+  //   )
+  //   //.delay (1000)
+  //   .easing(TWEEN.Easing.Cubic.Out)
+  //   //.onUpdate(() => render())
+  //   .start()
+  //   .onComplete(() => {
+  //     new TWEEN.Tween(camera.position)
+  //       .to(
+  //         {
+  //           x: inBetween.x,
+  //           y: inBetween.y,
+  //           z: inBetween.z
+  //         },
+  //         1500
+  //       )
+  //       //.delay (1000)
+  //       .easing(TWEEN.Easing.Cubic.Out)
+  //       //.onUpdate(() => render())
+  //       .start()
+  //       .onComplete(() => {
+  //         console.log("controls.target to", point);
+  //         console.log("completed tween", locationLabel, obj);
+  //         locationLabel.innerHTML = `${obj.name} <br> <span>visitar</span>`;
+  //         locationLabel.classList.remove("d-none");
+  //         controls.update();
+  //       });
+  //     controls.update();
+  //   });
+  new TWEEN.Tween(camera.position)
+    .to(
+      {
+        x: inBetween.x,
+        y: inBetween.y,
+        z: inBetween.z
+      },
+      1500
+    )
+    //.delay (1000)
+    .easing(TWEEN.Easing.Cubic.Out)
+    //.onUpdate(() => render())
+    .start()
+    .onStart(() => {
+      locationLabel.classList.add("d-none");
+      locationLabel.removeEventListener("click", openNewTab);
+    })
+    .onComplete(() => {
+      console.log("controls.target to", point);
+      console.log("completed tween camera pos", locationLabel, obj);
+      locationLabel.innerHTML = `${obj.name} <br> <span>visitar</span>`;
+      locationLabel.classList.remove("d-none");
+      selectedPoint = obj;
+      locationLabel.addEventListener("click", openNewTab);
+      controls.update();
+    });
+
+  new TWEEN.Tween(controls.target)
+    .to(
+      {
+        x: point.x,
+        y: point.y,
+        z: point.z
+      },
+      1500
+    )
+    //.delay (1000)
+    .easing(TWEEN.Easing.Cubic.Out)
+    //.onUpdate(() => render())
+    .start()
+    .onComplete(() => {
+      console.log("controls.target to", point);
+      console.log("completed tween", locationLabel, obj);
+      locationLabel.innerHTML = `${obj.name} <br> <span>visitar</span>`;
+      locationLabel.classList.remove("d-none");
+      controls.update();
+    });
+};
+
 const openNewTab = function (event) {
   if (selectedPoint?.userData?.url)
     window.open(selectedPoint.userData.url, "_blank");
@@ -634,7 +532,7 @@ function onDocumentMouseMove(event: MouseEvent) {
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
   raycaster.setFromCamera(mouse, camera);
-  if (raycaster.params.Points) raycaster.params.Points.threshold = 0.25;
+  if (raycaster.params.Points) raycaster.params.Points.threshold = 0.4;
 
   let key: any; // Type is "one" | "two" | "three"
   for (key in overablebjectsLabels) {
@@ -643,7 +541,7 @@ function onDocumentMouseMove(event: MouseEvent) {
 
   intersects = raycaster.intersectObjects(overablebjects, false);
   if (intersects.length > 0) {
-    console.log("intersects", intersects);
+    // console.log("intersects", intersects);
     overablebjectsLabels[intersects[0].object.id].element.className =
       "measurementLabel";
     overablebjectsLabels[intersects[0].object.id].position.set(
@@ -694,7 +592,7 @@ const generateGeralPoints = () => {
       particlesGeometry,
       new THREE.PointsMaterial({
         map: new THREE.TextureLoader().load("./img/pontoInteresse.jpg"),
-        size: 0.5
+        size: 0.3
       })
     );
     // let whateverYouWant = new THREE.Vector3();
@@ -727,8 +625,10 @@ const generateGeralPoints = () => {
 const loadGeralMapa = () => {
   scene.remove(aguieiraMap);
   if (!geralMapa) {
+    console.log("load");
     gltfLoader.load(
       "./models/FINAL-3M-1A-LINHA-textura8k-more-light.glb",
+
       gltf => {
         gltf.scene.scale.set(0.01, 0.01, 0.01);
         gltf.scene.rotateX(-Math.PI / 2);
@@ -774,11 +674,14 @@ const loadGeralMapa = () => {
         loadingDiv.style.display = "none";
 
         updateAllMaterials();
+
+        document.getElementById("myInput")?.classList.add("show");
+        populateDropdown();
       },
       xhr => {
-        console.log((xhr.loaded / 100632460) * 100 + "% loaded");
+        console.log((xhr.loaded / 125074916) * 100 + "% loaded");
         console.log("xhr", xhr);
-        loadingBar.style.width = (xhr.loaded / 100632460) * 100 - 1 + "%";
+        loadingBar.style.width = (xhr.loaded / 125074916) * 100 - 1 + "%";
       },
       error => {
         console.log(error);
@@ -797,7 +700,7 @@ const loadAguieiraMapa = () => {
     gltfLoader.load(
       "/models/AGUIEIRA-FINAL-V2-COMPRESSED.glb",
       gltf => {
-        gltf.scene.scale.set(1, 1, 1);
+        gltf.scene.scale.set(0.01, 0.01, 0.01);
         // gltf.scene.traverse(function (child) {
         //   if ((child as THREE.Mesh).isMesh) {
         //     const m = child as THREE.Mesh;
@@ -839,6 +742,21 @@ const loadAguieiraMapa = () => {
 
 loadGeralMapa();
 
+// let base = new THREE.Mesh(
+//   new THREE.CircleGeometry(25, 50),
+//   new THREE.MeshBasicMaterial({
+//     map: new THREE.TextureLoader().load("./img/map-texture.jpg"),
+//     side: THREE.DoubleSide
+//   })
+// );
+// (base.rotation.x = -Math.PI / 2),
+//   (base.rotation.z = -Math.PI / 2),
+//   // (base.rotation.y = -Math.PI / 2),
+//   (base.position.y = -1.2),
+//   (base.position.z = -0.7),
+//   (base.position.x = -1.5),
+//   scene.add(base);
+
 // setTimeout(loadAguieiraMapa, 6000);
 
 // const stats = Stats();
@@ -862,3 +780,56 @@ const tick = () => {
   window.requestAnimationFrame(tick);
 };
 tick();
+
+const populateDropdown = () => {
+  let div = document.getElementById("myDropdown");
+  geralPoints.map(point => {
+    const a = document.createElement("a");
+    a.addEventListener("click", () => {
+      let obj = overablebjects.find(ele => {
+        return ele.name == a.innerHTML;
+      }) as THREE.Points;
+      travelToPoint(
+        new THREE.Vector3(
+          point?.position.x,
+          point?.position.y,
+          point?.position.z
+        ),
+        obj
+      );
+      let myInput = document?.getElementById("myInput") as HTMLInputElement;
+      myInput.value = a.innerHTML;
+      window.myFunction();
+    });
+
+    a.innerHTML = point.name;
+    div?.appendChild(a);
+  });
+};
+
+declare global {
+  interface Window {
+    myFunction: Function;
+    filterFunction: Function;
+  }
+}
+
+window.myFunction = () => {
+  document.getElementById("myDropdown")?.classList.toggle("show");
+};
+
+window.filterFunction = () => {
+  let input, filter, ul, li, a, i, div, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+};
