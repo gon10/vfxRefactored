@@ -24,7 +24,7 @@ let loadingDiv: HTMLDivElement = document.querySelector(
   "#loading"
 ) as HTMLDivElement;
 loadingDiv.style.background =
-  "white url('./img/vf.jpeg') no-repeat center center";
+  "white url('./img/gif.gif') no-repeat center center";
 let loadingBar: HTMLDivElement = document.querySelector(
   "#loading-bar"
 ) as HTMLDivElement;
