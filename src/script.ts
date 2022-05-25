@@ -7,7 +7,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import Stats from "three/examples/jsm/libs/stats.module";
 import {
   CSS2DRenderer,
-  CSS2DObject
+  CSS2DObject,
 } from "three/examples/jsm/renderers/CSS2DRenderer";
 import geralPoints from "./points/geralPoints";
 import { TWEEN } from "three/examples/jsm/libs/tween.module.min";
@@ -59,7 +59,7 @@ scene.background = bgTexture;
  * Update all materials
  */
 const updateAllMaterials = () => {
-  scene.traverse(child => {
+  scene.traverse((child) => {
     if (
       child instanceof THREE.Mesh &&
       child.material instanceof THREE.MeshStandardMaterial
@@ -177,7 +177,7 @@ scene.add(ambientLight);
  */
 const sizes = {
   width: window.innerWidth,
-  height: window.innerHeight
+  height: window.innerHeight,
 };
 
 window.addEventListener("resize", () => {
@@ -244,7 +244,7 @@ controls.target.set(
  */
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
-  antialias: true
+  antialias: true,
 });
 renderer.physicallyCorrectLights = true;
 renderer.outputEncoding = THREE.sRGBEncoding;
@@ -329,7 +329,7 @@ function onClick() {
           new THREE.LineBasicMaterial({
             color: 0xffffff,
             transparent: true,
-            opacity: 0.75
+            opacity: 0.75,
             // depthTest: false,
             // depthWrite: false
           })
@@ -421,7 +421,7 @@ function onClick() {
         {
           x: inBetween.x,
           y: inBetween.y,
-          z: inBetween.z
+          z: inBetween.z,
         },
         1500
       )
@@ -448,7 +448,7 @@ function onClick() {
         {
           x: point.x,
           y: point.y,
-          z: point.z
+          z: point.z,
         },
         1500
       )
@@ -470,7 +470,7 @@ function onClick() {
           {
             x: cameraInitialTarget.x,
             y: cameraInitialTarget.y,
-            z: cameraInitialTarget.z
+            z: cameraInitialTarget.z,
           },
           1500
         )
@@ -485,7 +485,7 @@ function onClick() {
           {
             x: cameraInitialPosition.x,
             y: cameraInitialPosition.y,
-            z: cameraInitialPosition.z
+            z: cameraInitialPosition.z,
           },
           1500
         )
@@ -557,7 +557,7 @@ function onDocumentMouseMove(event: MouseEvent) {
 }
 
 const generateGeralPoints = () => {
-  geralPoints.forEach(geralPoint => {
+  geralPoints.forEach((geralPoint) => {
     const particlesGeometry = new THREE.BufferGeometry();
 
     const positions = new Float32Array(3);
@@ -574,7 +574,7 @@ const generateGeralPoints = () => {
       particlesGeometry,
       new THREE.PointsMaterial({
         map: new THREE.TextureLoader().load("./img/pontoInteresse.jpg"),
-        size: 0.1
+        size: 0.1,
       })
     );
     // let whateverYouWant = new THREE.Vector3();
@@ -609,8 +609,8 @@ const loadGeralMapa = () => {
   if (!geralMapa) {
     console.log("load");
     gltfLoader.load(
-      "./models/VFX2.glb",
-      gltf => {
+      "./models/VFX2-8192-2MV2.glb",
+      (gltf) => {
         gltf.scene.scale.set(0.01, 0.01, 0.01);
         gltf.scene.rotateX(-Math.PI / 2);
         gltf.scene.traverse(function (child) {
@@ -656,12 +656,12 @@ const loadGeralMapa = () => {
 
         updateAllMaterials();
       },
-      xhr => {
+      (xhr) => {
         console.log((xhr.loaded / 90957672) * 100 + "% loaded");
         console.log("xhr", xhr);
         loadingBar.style.width = (xhr.loaded / 90957672) * 100 - 1 + "%";
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -677,7 +677,7 @@ const loadAguieiraMapa = () => {
     console.log("load");
     gltfLoader.load(
       "/models/AGUIEIRA-FINAL-V2-COMPRESSED.glb",
-      gltf => {
+      (gltf) => {
         gltf.scene.scale.set(0.01, 0.01, 0.01);
         // gltf.scene.traverse(function (child) {
         //   if ((child as THREE.Mesh).isMesh) {
@@ -704,11 +704,11 @@ const loadAguieiraMapa = () => {
 
         // updateAllMaterials();
       },
-      xhr => {
+      (xhr) => {
         // console.log(xhr);
         console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
@@ -727,6 +727,22 @@ loadGeralMapa();
 /**
  * Animate
  */
+
+let base = new THREE.Mesh(
+  new THREE.CircleGeometry(25, 50),
+  new THREE.MeshBasicMaterial({
+    map: new THREE.TextureLoader().load("./img/map-texture.jpg"),
+    side: THREE.DoubleSide,
+  })
+);
+(base.rotation.x = -Math.PI / 2),
+  (base.rotation.z = 0),
+  // (base.rotation.y = -Math.PI / 2),
+  (base.position.y = -1.0),
+  (base.position.z = -3.5),
+  (base.position.x = 0),
+  scene.add(base);
+
 const tick = () => {
   // Update controls
   controls.update();
