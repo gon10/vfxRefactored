@@ -655,6 +655,7 @@ const loadGeralMapa = () => {
         loadingDiv.style.display = "none";
 
         updateAllMaterials();
+        populateDropdown();
       },
       (xhr) => {
         console.log((xhr.loaded / 90957672) * 100 + "% loaded");
@@ -759,3 +760,56 @@ const tick = () => {
   window.requestAnimationFrame(tick);
 };
 tick();
+
+const populateDropdown = () => {
+  let div = document.getElementById("myDropdown");
+  geralPoints.map((point) => {
+    const a = document.createElement("a");
+    a.addEventListener("click", () => {
+      let obj = overablebjects.find((ele) => {
+        return ele.name == a.innerHTML;
+      }) as THREE.Points;
+      travelToPoint(
+        new THREE.Vector3(
+          point?.position.x,
+          point?.position.y,
+          point?.position.z
+        ),
+        obj
+      );
+      let myInput = document?.getElementById("myInput") as HTMLInputElement;
+      myInput.value = a.innerHTML;
+      window.myFunction();
+    });
+
+    a.innerHTML = point.name;
+    div?.appendChild(a);
+  });
+};
+
+declare global {
+  interface Window {
+    myFunction: Function;
+    filterFunction: Function;
+  }
+}
+
+window.myFunction = () => {
+  document.getElementById("myDropdown")?.classList.toggle("show");
+};
+
+window.filterFunction = () => {
+  let input, filter, ul, li, a, i, div, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+};

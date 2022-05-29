@@ -68,3 +68,46 @@ body {
 .d-none {
   display: none;
 }
+
+/* #myInput:focus {
+  outline: 3px solid #ddd;
+} */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 1000;
+  /* background: rgba(15, 14, 21, 0.623);
+  width: 100%;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; */
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+.dropdown-content {
+  display: none;
+
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-family: "Arial";
+  cursor: pointer;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
