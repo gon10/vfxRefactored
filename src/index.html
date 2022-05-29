@@ -22,7 +22,21 @@
     </div>
     <canvas class="webgl"></canvas>
     <div class="centerLocationLabel d-none"></div>
-
-    <div id="myDropdown" class="dropdown-content"></div>
+    <div class="navbar">
+      <!-- <div id="logo-logo"></div> -->
+      <!-- <img src="../img/vfxira.png"></img> -->
+      <div class="dropdown">
+        <input
+          type="text"
+          placeholder="Search.."
+          id="myInput"
+          onkeyup="filterFunction()"
+          onclick="myFunction()"
+          class="myInput"
+        />
+        <div id="myDropdown" class="dropdown-content"></div>
+      </div>
+    </div>
+    <div id="logo-logo"></div>
   </body>
 </html>
