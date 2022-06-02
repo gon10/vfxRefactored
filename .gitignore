@@ -1,7 +1,7 @@
 .idea/
 .vscode/
 node_modules/
-static/
+static/models/
 build
 .DS_Store
 *.tgz

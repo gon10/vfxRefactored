@@ -762,6 +762,8 @@ const tick = () => {
 
   TWEEN.update();
 
+  // GroupCamera.rotation.y -= 0.02;
+
   // Call tick again on the next frame
   window.requestAnimationFrame(tick);
 };
