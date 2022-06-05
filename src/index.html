@@ -22,16 +22,40 @@
     </div>
     <canvas class="webgl"></canvas>
     <div class="centerLocationLabel d-none"></div>
-    <div class="dropdown">
-      <input
-        type="text"
-        placeholder="Search.."
-        id="myInput"
-        onkeyup="filterFunction()"
-        onclick="myFunction()"
-        class="myInput"
-      />
-      <div id="myDropdown" class="dropdown-content"></div>
+    <div class="navbar">
+      <!-- <div id="logo-logo"></div> -->
+      <!-- <img src="../img/vfxira.png"></img> -->
+      <h4 class="navbar__text">Realidade Virtual | Vila Franca de Xira</h4>
+      <!-- <span class="navbar__text">Realidade Virtual Vila Franca</span> -->
+
+      <div class="dropdown">
+        <input
+          type="text"
+          placeholder="Nome do espaço"
+          id="myInput"
+          onkeyup="filterFunction()"
+          onclick="myFunction()"
+          class="myInput"
+        />
+        <div id="myDropdown" class="dropdown-content"></div>
+      </div>
+    </div>
+    <div id="logo-logo"></div>
+    <div id="info-icon-helper">
+      <ul>
+        <li class="icon-1">Museu</li>
+        <li class="icon-2">Jardim</li>
+        <li class="icon-3">Monumento</li>
+        <li class="icon-4">Municipio</li>
+        <li class="icon-10">Ponto Interesse</li>
+      </ul>
+      <ul>
+        <li class="icon-6">Fonte</li>
+        <li class="icon-7">Auditorio</li>
+        <li class="icon-8">Igreja</li>
+        <li class="icon-9">Posto Turismo</li>
+      </ul>
+      <div id="info-icon-helper-button"><h3>i</h3></div>
     </div>
   </body>
 </html>
