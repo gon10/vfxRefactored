@@ -206,7 +206,11 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-const cameraInitialPosition: Vector3 = new Vector3(4, 0.5, -3);
+const cameraInitialPosition: Vector3 = new Vector3(
+  8.085473576245471,
+  6.785062143194695,
+  -7.37029123559885
+);
 const cameraInitialTarget: Vector3 = new Vector3(0.66, -0.5, -2.8);
 camera.position.set(
   cameraInitialPosition.x,
@@ -287,6 +291,10 @@ window.addEventListener("keydown", function (event) {
     ctrlDown = true;
     controls.enabled = false;
     renderer.domElement.style.cursor = "crosshair";
+  }
+  if (event.key === "i") {
+    console.log(camera.position);
+    console.log(camera.rotation);
   }
 });
 
@@ -614,10 +622,13 @@ const loadGeralMapa = () => {
   if (!geralMapa) {
     console.log("load");
     gltfLoader.load(
-      "./models/VFX2-8192-2MV2.glb",
+      "./models/3M-calhandriz.glb",
       (gltf) => {
         gltf.scene.scale.set(0.01, 0.01, 0.01);
+        console.log(gltf.scene.position);
+        gltf.scene.position.set(0, -2.0, 0);
         gltf.scene.rotateX(-Math.PI / 2);
+        // gltf.scene.rotateZ(-Math.PI / 2);
         gltf.scene.traverse(function (child) {
           if ((child as THREE.Mesh).isMesh) {
             const m = child as THREE.Mesh;
@@ -735,20 +746,20 @@ loadGeralMapa();
  * Animate
  */
 
-let base = new THREE.Mesh(
-  new THREE.CircleGeometry(25, 50),
-  new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load("./img/map-texture.jpg"),
-    side: THREE.DoubleSide,
-  })
-);
-(base.rotation.x = -Math.PI / 2),
-  (base.rotation.z = 0),
-  // (base.rotation.y = -Math.PI / 2),
-  (base.position.y = -1.0),
-  (base.position.z = -3.5),
-  (base.position.x = 0),
-  scene.add(base);
+// let base = new THREE.Mesh(
+//   new THREE.CircleGeometry(25, 50),
+//   new THREE.MeshBasicMaterial({
+//     map: new THREE.TextureLoader().load("./img/map-texture.jpg"),
+//     side: THREE.DoubleSide,
+//   })
+// );
+// (base.rotation.x = -Math.PI / 2),
+//   (base.rotation.z = 0),
+//   // (base.rotation.y = -Math.PI / 2),
+//   (base.position.y = -1.0),
+//   (base.position.z = -3.5),
+//   (base.position.x = 0),
+//   scene.add(base);
 
 const tick = () => {
   // Update controls
