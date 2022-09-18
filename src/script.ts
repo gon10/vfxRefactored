@@ -207,11 +207,15 @@ const camera = new THREE.PerspectiveCamera(
   100
 );
 const cameraInitialPosition: Vector3 = new Vector3(
-  8.085473576245471,
-  6.785062143194695,
-  -7.37029123559885
+  1.4221397700186833,
+  3.5402264539238146,
+  -5.294399984260468
 );
-const cameraInitialTarget: Vector3 = new Vector3(0.66, -0.5, -2.8);
+const cameraInitialTarget: Vector3 = new Vector3(
+  1.7658603673685414,
+  1.2426754485438753,
+  -0.6193141277913858
+);
 camera.position.set(
   cameraInitialPosition.x,
   cameraInitialPosition.y,
@@ -295,6 +299,7 @@ window.addEventListener("keydown", function (event) {
   if (event.key === "i") {
     console.log(camera.position);
     console.log(camera.rotation);
+    console.log(controls.target);
   }
 });
 
@@ -622,7 +627,7 @@ const loadGeralMapa = () => {
   if (!geralMapa) {
     console.log("load");
     gltfLoader.load(
-      "./models/3M-calhandriz.glb",
+      "./models/3M-AGUIEIRA.glb",
       (gltf) => {
         gltf.scene.scale.set(0.01, 0.01, 0.01);
         console.log(gltf.scene.position);
@@ -675,9 +680,9 @@ const loadGeralMapa = () => {
         populateDropdown();
       },
       (xhr) => {
-        console.log((xhr.loaded / 90957672) * 100 + "% loaded");
+        console.log((xhr.loaded / 97912072) * 100 + "% loaded");
         console.log("xhr", xhr);
-        loadingBar.style.width = (xhr.loaded / 90957672) * 100 - 1 + "%";
+        loadingBar.style.width = (xhr.loaded / 97912072) * 100 - 1 + "%";
       },
       (error) => {
         console.log(error);
