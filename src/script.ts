@@ -207,14 +207,14 @@ const camera = new THREE.PerspectiveCamera(
   100
 );
 const cameraInitialPosition: Vector3 = new Vector3(
-  1.4221397700186833,
-  3.5402264539238146,
-  -5.294399984260468
+  5.0748153057487375,
+  2.4778398843811997,
+  1.6434394040706144
 );
 const cameraInitialTarget: Vector3 = new Vector3(
-  1.7658603673685414,
-  1.2426754485438753,
-  -0.6193141277913858
+  2.1954670540997627,
+  0.9490157316060772,
+  2.0877998449925674
 );
 camera.position.set(
   cameraInitialPosition.x,
@@ -297,9 +297,9 @@ window.addEventListener("keydown", function (event) {
     renderer.domElement.style.cursor = "crosshair";
   }
   if (event.key === "i") {
-    console.log(camera.position);
-    console.log(camera.rotation);
-    console.log(controls.target);
+    console.log("camera.position", camera.position);
+    console.log("camera.rotation", camera.rotation);
+    console.log("controls.target", controls.target);
   }
 });
 
