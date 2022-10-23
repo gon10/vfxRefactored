@@ -20,14 +20,20 @@ let herculesMap: any = null;
 let locationLabel: HTMLDivElement = document.querySelector(
   ".centerLocationLabel"
 ) as HTMLDivElement;
+
 let loadingDiv: HTMLDivElement = document.querySelector(
   "#loading"
 ) as HTMLDivElement;
 loadingDiv.style.background =
-  "white url('./img/vf.jpeg') no-repeat center center";
+  "white url('./img/gif.gif') no-repeat center center";
 let loadingBar: HTMLDivElement = document.querySelector(
   "#loading-bar"
 ) as HTMLDivElement;
+let logo: HTMLDivElement = document.querySelector(
+  "#logo-logo"
+) as HTMLDivElement;
+logo.style.display = "none";
+
 let selectedPoint: any = null;
 /**
  * Loaders
@@ -674,6 +680,7 @@ const loadGeralMapa = () => {
         scene.add(geral_mapa_group);
         generateGeralPoints();
         loadingDiv.style.display = "none";
+        logo.style.display = "block";
 
         updateAllMaterials();
         document.getElementById("myInput")?.classList.add("show");
