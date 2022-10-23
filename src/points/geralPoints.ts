@@ -45,9 +45,9 @@ export default AllPoints = [
     name: "	Obra Militar nº 122 - Forte 2º Calhandriz ou do Cabeço	",
     point: "	4	",
     position: {
-      x: -4.270917798807597,
-      y: 1.242284910622643,
-      z: -2.3157880641741873,
+      x: -0.08957886621843258,
+      y: 1.2011897732692548,
+      z: -3.8717826397405446,
     },
     icon: "./img/	pontoInteresse.jpg",
     url: "	https://rhlt.cm-vfxira.pt/calhandriz/om122/",

@@ -532,7 +532,7 @@ function onDocumentMouseMove(event: MouseEvent) {
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
   raycaster.setFromCamera(mouse, camera);
-  if (raycaster.params.Points) raycaster.params.Points.threshold = 0.1;
+  if (raycaster.params.Points) raycaster.params.Points.threshold = 0.2;
 
   let key: any; // Type is "one" | "two" | "three"
   for (key in overablebjectsLabels) {
@@ -592,7 +592,7 @@ const generateGeralPoints = () => {
       particlesGeometry,
       new THREE.PointsMaterial({
         map: new THREE.TextureLoader().load("./img/pontoInteresse.jpg"),
-        size: 0.2,
+        size: 0.6,
       })
     );
     // let whateverYouWant = new THREE.Vector3();
